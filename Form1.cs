@@ -52,9 +52,17 @@ namespace Restaurant_Menu
 
         private void open_json_Click(object sender, EventArgs e)
         {
-            string thefile = "tacoshop.json";
-            dynamic jsonfile = JsonConvert.DeserializeObject(File.ReadAllText(thefile));
-            Console.WriteLine($"{jsonfile["restaurantName"]}");
+            string filePath = "C:\\Users\\Public\\tacoshop.json";
+            
+            dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
+            fillInData(jsonFile);
+        }
+
+        private void fillInData(dynamic jsonFile)
+        {
+            textBoxRestaurantName.Text = (string)jsonFile["restaurantName"];
+            textBoxRestaurantIcon.Text = (string)jsonFile["restaurantIcon"];
+            textBoxRestaurantDescription.Text = (string)jsonFile["restaurantDescription"];
         }
     }
 }

@@ -50,6 +50,12 @@ namespace Restaurant_Menu
             this.label8 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.open_json = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxRestaurantName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxRestaurantIcon = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxRestaurantDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -251,11 +257,66 @@ namespace Restaurant_Menu
             this.open_json.UseVisualStyleBackColor = true;
             this.open_json.Click += new System.EventHandler(this.open_json_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(814, 39);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Restaurant Name:";
+            // 
+            // textBoxRestaurantName
+            // 
+            this.textBoxRestaurantName.Location = new System.Drawing.Point(913, 36);
+            this.textBoxRestaurantName.Name = "textBoxRestaurantName";
+            this.textBoxRestaurantName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRestaurantName.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(821, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Restaurant Icon:";
+            // 
+            // textBoxRestaurantIcon
+            // 
+            this.textBoxRestaurantIcon.Location = new System.Drawing.Point(913, 77);
+            this.textBoxRestaurantIcon.Name = "textBoxRestaurantIcon";
+            this.textBoxRestaurantIcon.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRestaurantIcon.TabIndex = 23;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(794, 116);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Restaurant Description:";
+            // 
+            // textBoxRestaurantDescription
+            // 
+            this.textBoxRestaurantDescription.Location = new System.Drawing.Point(913, 113);
+            this.textBoxRestaurantDescription.Multiline = true;
+            this.textBoxRestaurantDescription.Name = "textBoxRestaurantDescription";
+            this.textBoxRestaurantDescription.Size = new System.Drawing.Size(185, 82);
+            this.textBoxRestaurantDescription.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1150, 450);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textBoxRestaurantDescription);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBoxRestaurantIcon);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBoxRestaurantName);
             this.Controls.Add(this.open_json);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox3);
@@ -309,6 +370,12 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button open_json;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxRestaurantName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxRestaurantIcon;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxRestaurantDescription;
     }
 }
 
