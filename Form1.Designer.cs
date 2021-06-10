@@ -256,7 +256,7 @@ namespace Restaurant_Menu
             this.buttonOpenJSON.TabIndex = 20;
             this.buttonOpenJSON.Text = "Open .Json";
             this.buttonOpenJSON.UseVisualStyleBackColor = true;
-            this.buttonOpenJSON.Click += new System.EventHandler(this.open_json_Click);
+            this.buttonOpenJSON.Click += new System.EventHandler(this.buttonOpenJSON_Click);
             // 
             // label9
             // 

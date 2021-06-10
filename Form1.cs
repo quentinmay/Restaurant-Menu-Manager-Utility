@@ -29,7 +29,7 @@ namespace Restaurant_Menu
 
 
 
-        private void open_json_Click(object sender, EventArgs e)
+        private void buttonOpenJSON_Click(object sender, EventArgs e)
         {
             string filePath = "C:\\Users\\Public\\tacoshop.json";
             openJson(filePath);
