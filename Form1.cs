@@ -15,14 +15,10 @@ namespace Restaurant_Menu
 {
     public partial class Form1 : Form
     {
+        private dynamic jsonMenu;
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,39 +26,31 @@ namespace Restaurant_Menu
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void open_json_Click(object sender, EventArgs e)
         {
             string filePath = "C:\\Users\\Public\\tacoshop.json";
-            
-            dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
-            fillInData(jsonFile);
+            openJson(filePath);
+
+
+
         }
 
-        private void fillInData(dynamic jsonFile)
+        private void openJson(string filePath)
         {
-            textBoxRestaurantName.Text = (string)jsonFile["restaurantName"];
-            textBoxRestaurantIcon.Text = (string)jsonFile["restaurantIcon"];
-            textBoxRestaurantDescription.Text = (string)jsonFile["restaurantDescription"];
+            this.jsonMenu = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
+            fillInData();
+        }
+
+        private void fillInData()
+        {
+            this.Text = "Editing " + (string)jsonMenu["restaurantName"];
+
+            textBoxRestaurantName.Text = (string)jsonMenu["restaurantName"];
+            textBoxRestaurantIcon.Text = (string)jsonMenu["restaurantIcon"];
+            textBoxRestaurantDescription.Text = (string)jsonMenu["restaurantDescription"];
+
         }
     }
 }
