@@ -59,6 +59,7 @@ namespace Restaurant_Menu
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.ClearAllButt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -336,11 +337,22 @@ namespace Restaurant_Menu
             this.comboBoxCategory.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCategory.TabIndex = 28;
             // 
+            // ClearAllButt
+            // 
+            this.ClearAllButt.Location = new System.Drawing.Point(429, 367);
+            this.ClearAllButt.Name = "ClearAllButt";
+            this.ClearAllButt.Size = new System.Drawing.Size(112, 48);
+            this.ClearAllButt.TabIndex = 30;
+            this.ClearAllButt.Text = "Clear All";
+            this.ClearAllButt.UseVisualStyleBackColor = true;
+            this.ClearAllButt.Click += new System.EventHandler(this.ClearAllButt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 450);
+            this.Controls.Add(this.ClearAllButt);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.button1);
@@ -412,6 +424,7 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Button ClearAllButt;
     }
 }
 

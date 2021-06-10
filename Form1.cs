@@ -59,5 +59,17 @@ namespace Restaurant_Menu
         {
 
         }
+
+        private void ClearAllButt_Click(object sender, EventArgs e)
+        {
+            textBoxNewItemName.Clear();
+            textBoxNewItemPrice.Clear();
+            textBoxCurrentItemName.Clear();
+            textBoxCurrentItemPrice.Clear();
+            textBoxRestaurantName.Clear();
+            textBoxRestaurantIcon.Clear();
+            textBoxRestaurantDescription.Clear();
+            comboBoxSelectItem.Text = string.Empty;
+        }
     }
 }
