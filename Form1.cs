@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace Restaurant_Menu
 {
@@ -38,6 +39,20 @@ namespace Restaurant_Menu
         {
             this.jsonMenu = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
             fillInData();
+            /*
+            try
+            {
+                WebClient client = new WebClient();
+                string myFile = @"D:\test_file.txt";
+                client.Credentials = CredentialCache.DefaultCredentials;
+                client.UploadFile(@"http://localhost/uploads/upload.php", "POST", myFile);
+                client.Dispose();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            */
         }
 
         private void fillInData()
@@ -57,11 +72,6 @@ namespace Restaurant_Menu
         }
         private void clearData()
         {
-
-        }
-
-        private void ClearAllButt_Click(object sender, EventArgs e)
-        {
             textBoxNewItemName.Clear();
             textBoxNewItemPrice.Clear();
             textBoxCurrentItemName.Clear();
@@ -70,6 +80,11 @@ namespace Restaurant_Menu
             textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
             comboBoxSelectItem.Text = string.Empty;
+        }
+
+        private void buttonClearAll_Click(object sender, EventArgs e)
+        {
+            clearData();
         }
     }
 }

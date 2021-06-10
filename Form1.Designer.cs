@@ -49,7 +49,7 @@ namespace Restaurant_Menu
             this.textBoxCurrentItemPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxCurrentItemName = new System.Windows.Forms.TextBox();
-            this.open_json = new System.Windows.Forms.Button();
+            this.buttonOpenJSON = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxRestaurantName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -59,7 +59,9 @@ namespace Restaurant_Menu
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
-            this.ClearAllButt = new System.Windows.Forms.Button();
+            this.buttonClearAll = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxURL = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +158,7 @@ namespace Restaurant_Menu
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 223);
+            this.label4.Location = new System.Drawing.Point(12, 223);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 31);
             this.label4.TabIndex = 10;
@@ -207,7 +209,7 @@ namespace Restaurant_Menu
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.button6.Location = new System.Drawing.Point(1031, 362);
+            this.button6.Location = new System.Drawing.Point(958, 362);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(107, 76);
             this.button6.TabIndex = 15;
@@ -246,20 +248,20 @@ namespace Restaurant_Menu
             this.textBoxCurrentItemName.Size = new System.Drawing.Size(100, 20);
             this.textBoxCurrentItemName.TabIndex = 16;
             // 
-            // open_json
+            // buttonOpenJSON
             // 
-            this.open_json.Location = new System.Drawing.Point(572, 359);
-            this.open_json.Name = "open_json";
-            this.open_json.Size = new System.Drawing.Size(126, 55);
-            this.open_json.TabIndex = 20;
-            this.open_json.Text = "Open .Json";
-            this.open_json.UseVisualStyleBackColor = true;
-            this.open_json.Click += new System.EventHandler(this.open_json_Click);
+            this.buttonOpenJSON.Location = new System.Drawing.Point(610, 390);
+            this.buttonOpenJSON.Name = "buttonOpenJSON";
+            this.buttonOpenJSON.Size = new System.Drawing.Size(112, 48);
+            this.buttonOpenJSON.TabIndex = 20;
+            this.buttonOpenJSON.Text = "Open .Json";
+            this.buttonOpenJSON.UseVisualStyleBackColor = true;
+            this.buttonOpenJSON.Click += new System.EventHandler(this.open_json_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(819, 39);
+            this.label9.Location = new System.Drawing.Point(786, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 22;
@@ -267,7 +269,7 @@ namespace Restaurant_Menu
             // 
             // textBoxRestaurantName
             // 
-            this.textBoxRestaurantName.Location = new System.Drawing.Point(913, 36);
+            this.textBoxRestaurantName.Location = new System.Drawing.Point(880, 43);
             this.textBoxRestaurantName.Name = "textBoxRestaurantName";
             this.textBoxRestaurantName.Size = new System.Drawing.Size(100, 20);
             this.textBoxRestaurantName.TabIndex = 21;
@@ -275,7 +277,7 @@ namespace Restaurant_Menu
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(826, 69);
+            this.label10.Location = new System.Drawing.Point(793, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 13);
             this.label10.TabIndex = 24;
@@ -283,7 +285,7 @@ namespace Restaurant_Menu
             // 
             // textBoxRestaurantIcon
             // 
-            this.textBoxRestaurantIcon.Location = new System.Drawing.Point(913, 66);
+            this.textBoxRestaurantIcon.Location = new System.Drawing.Point(880, 73);
             this.textBoxRestaurantIcon.Name = "textBoxRestaurantIcon";
             this.textBoxRestaurantIcon.Size = new System.Drawing.Size(100, 20);
             this.textBoxRestaurantIcon.TabIndex = 23;
@@ -291,7 +293,7 @@ namespace Restaurant_Menu
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(794, 105);
+            this.label11.Location = new System.Drawing.Point(761, 112);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 13);
             this.label11.TabIndex = 26;
@@ -299,7 +301,7 @@ namespace Restaurant_Menu
             // 
             // textBoxRestaurantDescription
             // 
-            this.textBoxRestaurantDescription.Location = new System.Drawing.Point(913, 102);
+            this.textBoxRestaurantDescription.Location = new System.Drawing.Point(880, 109);
             this.textBoxRestaurantDescription.Multiline = true;
             this.textBoxRestaurantDescription.Name = "textBoxRestaurantDescription";
             this.textBoxRestaurantDescription.Size = new System.Drawing.Size(185, 82);
@@ -337,22 +339,40 @@ namespace Restaurant_Menu
             this.comboBoxCategory.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCategory.TabIndex = 28;
             // 
-            // ClearAllButt
+            // buttonClearAll
             // 
-            this.ClearAllButt.Location = new System.Drawing.Point(429, 367);
-            this.ClearAllButt.Name = "ClearAllButt";
-            this.ClearAllButt.Size = new System.Drawing.Size(112, 48);
-            this.ClearAllButt.TabIndex = 30;
-            this.ClearAllButt.Text = "Clear All";
-            this.ClearAllButt.UseVisualStyleBackColor = true;
-            this.ClearAllButt.Click += new System.EventHandler(this.ClearAllButt_Click);
+            this.buttonClearAll.Location = new System.Drawing.Point(492, 390);
+            this.buttonClearAll.Name = "buttonClearAll";
+            this.buttonClearAll.Size = new System.Drawing.Size(112, 48);
+            this.buttonClearAll.TabIndex = 30;
+            this.buttonClearAll.Text = "Clear All";
+            this.buttonClearAll.UseVisualStyleBackColor = true;
+            this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(241, 420);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 13);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Webserver URL:";
+            // 
+            // textBoxURL
+            // 
+            this.textBoxURL.Location = new System.Drawing.Point(328, 417);
+            this.textBoxURL.Name = "textBoxURL";
+            this.textBoxURL.Size = new System.Drawing.Size(158, 20);
+            this.textBoxURL.TabIndex = 31;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 450);
-            this.Controls.Add(this.ClearAllButt);
+            this.ClientSize = new System.Drawing.Size(1088, 450);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBoxURL);
+            this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.button1);
@@ -362,7 +382,7 @@ namespace Restaurant_Menu
             this.Controls.Add(this.textBoxRestaurantIcon);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxRestaurantName);
-            this.Controls.Add(this.open_json);
+            this.Controls.Add(this.buttonOpenJSON);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxCurrentItemPrice);
             this.Controls.Add(this.label8);
@@ -414,7 +434,7 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxCurrentItemPrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxCurrentItemName;
-        private System.Windows.Forms.Button open_json;
+        private System.Windows.Forms.Button buttonOpenJSON;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxRestaurantName;
         private System.Windows.Forms.Label label10;
@@ -424,7 +444,9 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxCategory;
-        private System.Windows.Forms.Button ClearAllButt;
+        private System.Windows.Forms.Button buttonClearAll;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxURL;
     }
 }
 
