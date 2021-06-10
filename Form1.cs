@@ -32,9 +32,6 @@ namespace Restaurant_Menu
         {
             string filePath = "C:\\Users\\Public\\tacoshop.json";
             openJson(filePath);
-
-
-
         }
 
         private void openJson(string filePath)
@@ -45,11 +42,21 @@ namespace Restaurant_Menu
 
         private void fillInData()
         {
-            this.Text = "Editing " + (string)jsonMenu["restaurantName"];
+            Console.WriteLine(jsonMenu.categories[0]);
+            //Populate basic menu data.
+            this.Text = "Editing " + (string)jsonMenu.restaurantName;
+            textBoxRestaurantName.Text = (string)jsonMenu.restaurantName;
+            textBoxRestaurantIcon.Text = (string)jsonMenu.restaurantIcon;
+            textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
 
-            textBoxRestaurantName.Text = (string)jsonMenu["restaurantName"];
-            textBoxRestaurantIcon.Text = (string)jsonMenu["restaurantIcon"];
-            textBoxRestaurantDescription.Text = (string)jsonMenu["restaurantDescription"];
+
+            //Populate existing items combobox
+            foreach(dynamic category in jsonMenu.categories) {
+                comboBoxCategory.Items.Add((string)category.categoryName);
+            }
+        }
+        private void clearData()
+        {
 
         }
     }

@@ -57,6 +57,8 @@ namespace Restaurant_Menu
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxRestaurantDescription = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +179,7 @@ namespace Restaurant_Menu
             "Taco",
             "Steak",
             "Large Soda"});
-            this.comboBoxSelectItem.Location = new System.Drawing.Point(117, 266);
+            this.comboBoxSelectItem.Location = new System.Drawing.Point(386, 235);
             this.comboBoxSelectItem.Name = "comboBoxSelectItem";
             this.comboBoxSelectItem.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSelectItem.TabIndex = 12;
@@ -185,7 +187,7 @@ namespace Restaurant_Menu
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 269);
+            this.label6.Location = new System.Drawing.Point(284, 238);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 13);
             this.label6.TabIndex = 13;
@@ -214,7 +216,7 @@ namespace Restaurant_Menu
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(271, 301);
+            this.label7.Location = new System.Drawing.Point(329, 301);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 19;
@@ -222,7 +224,7 @@ namespace Restaurant_Menu
             // 
             // textBoxCurrentItemPrice
             // 
-            this.textBoxCurrentItemPrice.Location = new System.Drawing.Point(328, 298);
+            this.textBoxCurrentItemPrice.Location = new System.Drawing.Point(386, 298);
             this.textBoxCurrentItemPrice.Name = "textBoxCurrentItemPrice";
             this.textBoxCurrentItemPrice.Size = new System.Drawing.Size(100, 20);
             this.textBoxCurrentItemPrice.TabIndex = 18;
@@ -230,7 +232,7 @@ namespace Restaurant_Menu
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(267, 269);
+            this.label8.Location = new System.Drawing.Point(325, 269);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 17;
@@ -238,7 +240,7 @@ namespace Restaurant_Menu
             // 
             // textBoxCurrentItemName
             // 
-            this.textBoxCurrentItemName.Location = new System.Drawing.Point(328, 266);
+            this.textBoxCurrentItemName.Location = new System.Drawing.Point(386, 266);
             this.textBoxCurrentItemName.Name = "textBoxCurrentItemName";
             this.textBoxCurrentItemName.Size = new System.Drawing.Size(100, 20);
             this.textBoxCurrentItemName.TabIndex = 16;
@@ -312,11 +314,35 @@ namespace Restaurant_Menu
             this.button1.Text = "Save Changes To Item ";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 273);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(124, 13);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Select Existing Category:";
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Items.AddRange(new object[] {
+            "Burger",
+            "Taco",
+            "Steak",
+            "Large Soda"});
+            this.comboBoxCategory.Location = new System.Drawing.Point(142, 270);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCategory.TabIndex = 28;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 450);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxRestaurantDescription);
@@ -384,6 +410,8 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxRestaurantDescription;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
     }
 }
 
