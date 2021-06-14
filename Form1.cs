@@ -39,20 +39,9 @@ namespace Restaurant_Menu
         {
             this.jsonMenu = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
             fillInData();
-            /*
-            try
-            {
-                WebClient client = new WebClient();
-                string myFile = @"D:\test_file.txt";
-                client.Credentials = CredentialCache.DefaultCredentials;
-                client.UploadFile(@"http://localhost/uploads/upload.php", "POST", myFile);
-                client.Dispose();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-            */
+            
+   
+            
         }
 
         private void fillInData()
@@ -85,6 +74,22 @@ namespace Restaurant_Menu
         private void buttonClearAll_Click(object sender, EventArgs e)
         {
             clearData();
+        }
+
+        private void buttonSaveMenu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                string myFile = @"C:\Users\Public\testupload.txt";
+                client.Credentials = CredentialCache.DefaultCredentials;
+                client.UploadFile(@"http://192.168.0.200:80", "POST", myFile);
+                client.Dispose();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
     }
 }

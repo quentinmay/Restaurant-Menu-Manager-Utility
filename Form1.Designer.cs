@@ -29,13 +29,13 @@ namespace Restaurant_Menu
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddNewItem = new System.Windows.Forms.Button();
+            this.buttonAddNewItem = new System.Windows.Forms.Button();
             this.textBoxNewItemName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxNewItemPrice = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.add_butt = new System.Windows.Forms.Button();
+            this.buttonAddItemPicture = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,8 +43,8 @@ namespace Restaurant_Menu
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSelectItem = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonDeleteItem = new System.Windows.Forms.Button();
+            this.buttonSaveMenu = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCurrentItemPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@ namespace Restaurant_Menu
             this.textBoxRestaurantIcon = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxRestaurantDescription = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveItem = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.buttonClearAll = new System.Windows.Forms.Button();
@@ -65,15 +65,15 @@ namespace Restaurant_Menu
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // AddNewItem
+            // buttonAddNewItem
             // 
-            this.AddNewItem.BackColor = System.Drawing.Color.Lime;
-            this.AddNewItem.Location = new System.Drawing.Point(615, 84);
-            this.AddNewItem.Name = "AddNewItem";
-            this.AddNewItem.Size = new System.Drawing.Size(107, 76);
-            this.AddNewItem.TabIndex = 0;
-            this.AddNewItem.Text = "Add New Item To Menu";
-            this.AddNewItem.UseVisualStyleBackColor = false;
+            this.buttonAddNewItem.BackColor = System.Drawing.Color.Lime;
+            this.buttonAddNewItem.Location = new System.Drawing.Point(615, 84);
+            this.buttonAddNewItem.Name = "buttonAddNewItem";
+            this.buttonAddNewItem.Size = new System.Drawing.Size(107, 76);
+            this.buttonAddNewItem.TabIndex = 0;
+            this.buttonAddNewItem.Text = "Add New Item To Menu";
+            this.buttonAddNewItem.UseVisualStyleBackColor = false;
             // 
             // textBoxNewItemName
             // 
@@ -117,14 +117,14 @@ namespace Restaurant_Menu
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // add_butt
+            // buttonAddItemPicture
             // 
-            this.add_butt.Location = new System.Drawing.Point(197, 92);
-            this.add_butt.Name = "add_butt";
-            this.add_butt.Size = new System.Drawing.Size(75, 52);
-            this.add_butt.TabIndex = 6;
-            this.add_butt.Text = "Add Item Picture";
-            this.add_butt.UseVisualStyleBackColor = true;
+            this.buttonAddItemPicture.Location = new System.Drawing.Point(197, 92);
+            this.buttonAddItemPicture.Name = "buttonAddItemPicture";
+            this.buttonAddItemPicture.Size = new System.Drawing.Size(75, 52);
+            this.buttonAddItemPicture.TabIndex = 6;
+            this.buttonAddItemPicture.Text = "Add Item Picture";
+            this.buttonAddItemPicture.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -196,25 +196,26 @@ namespace Restaurant_Menu
             this.label6.TabIndex = 13;
             this.label6.Text = "Select Existing Item:";
             // 
-            // button5
+            // buttonDeleteItem
             // 
-            this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(654, 237);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(68, 50);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Delete Item From Menu";
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonDeleteItem.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteItem.Location = new System.Drawing.Point(654, 237);
+            this.buttonDeleteItem.Name = "buttonDeleteItem";
+            this.buttonDeleteItem.Size = new System.Drawing.Size(68, 50);
+            this.buttonDeleteItem.TabIndex = 14;
+            this.buttonDeleteItem.Text = "Delete Item From Menu";
+            this.buttonDeleteItem.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // buttonSaveMenu
             // 
-            this.button6.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.button6.Location = new System.Drawing.Point(958, 362);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(107, 76);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Save Changes To Item ";
-            this.button6.UseVisualStyleBackColor = false;
+            this.buttonSaveMenu.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.buttonSaveMenu.Location = new System.Drawing.Point(958, 362);
+            this.buttonSaveMenu.Name = "buttonSaveMenu";
+            this.buttonSaveMenu.Size = new System.Drawing.Size(107, 76);
+            this.buttonSaveMenu.TabIndex = 15;
+            this.buttonSaveMenu.Text = "Save Menu";
+            this.buttonSaveMenu.UseVisualStyleBackColor = false;
+            this.buttonSaveMenu.Click += new System.EventHandler(this.buttonSaveMenu_Click);
             // 
             // label7
             // 
@@ -307,15 +308,15 @@ namespace Restaurant_Menu
             this.textBoxRestaurantDescription.Size = new System.Drawing.Size(185, 82);
             this.textBoxRestaurantDescription.TabIndex = 25;
             // 
-            // button1
+            // buttonSaveItem
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.button1.Location = new System.Drawing.Point(541, 223);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 76);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Save Changes To Item ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonSaveItem.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.buttonSaveItem.Location = new System.Drawing.Point(541, 223);
+            this.buttonSaveItem.Name = "buttonSaveItem";
+            this.buttonSaveItem.Size = new System.Drawing.Size(107, 76);
+            this.buttonSaveItem.TabIndex = 27;
+            this.buttonSaveItem.Text = "Save Changes To Item ";
+            this.buttonSaveItem.UseVisualStyleBackColor = false;
             // 
             // label12
             // 
@@ -375,7 +376,7 @@ namespace Restaurant_Menu
             this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBoxCategory);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSaveItem);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxRestaurantDescription);
             this.Controls.Add(this.label10);
@@ -387,8 +388,8 @@ namespace Restaurant_Menu
             this.Controls.Add(this.textBoxCurrentItemPrice);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxCurrentItemName);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.buttonSaveMenu);
+            this.Controls.Add(this.buttonDeleteItem);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxSelectItem);
             this.Controls.Add(this.label5);
@@ -396,13 +397,13 @@ namespace Restaurant_Menu
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.add_butt);
+            this.Controls.Add(this.buttonAddItemPicture);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNewItemPrice);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNewItemName);
-            this.Controls.Add(this.AddNewItem);
+            this.Controls.Add(this.buttonAddNewItem);
             this.Name = "Form1";
             this.Text = "Editting TacoBellMenu.json";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -414,13 +415,13 @@ namespace Restaurant_Menu
 
         #endregion
 
-        private System.Windows.Forms.Button AddNewItem;
+        private System.Windows.Forms.Button buttonAddNewItem;
         private System.Windows.Forms.TextBox textBoxNewItemName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNewItemPrice;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button add_butt;
+        private System.Windows.Forms.Button buttonAddItemPicture;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
@@ -428,8 +429,8 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxSelectItem;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonDeleteItem;
+        private System.Windows.Forms.Button buttonSaveMenu;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxCurrentItemPrice;
         private System.Windows.Forms.Label label8;
@@ -441,7 +442,7 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxRestaurantIcon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxRestaurantDescription;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveItem;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.Button buttonClearAll;
