@@ -1,16 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Linq;
 
 namespace Restaurant_Menu
 {
@@ -29,19 +25,50 @@ namespace Restaurant_Menu
 
 
 
-        private void buttonOpenJSON_Click(object sender, EventArgs e)
+        async private void buttonOpenJSON_Click(object sender, EventArgs e)
         {
-            string filePath = "C:\\Users\\Public\\tacoshop.json";
-            openJson(filePath);
+            jsonMenu = await downloadJson(textBoxURL.Text);
+            //Console.WriteLine(jsonMenu);
+            fillInData();
+            //string filePath = "C:\\Users\\Public\\tacoshop.json";
+            //openJson(filePath);
+
         }
 
-        private void openJson(string filePath)
+         private void openJson(string filePath)
         {
+
             this.jsonMenu = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
             fillInData();
+        }
+        async private Task<dynamic> downloadJson(string jsonURL)
+        {
+
+            try
+            {
+
+                HttpClient client = new HttpClient();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(jsonURL);
+                
+                request.ContentType = "application/json; charset=utf-8";
+                request.Accept = "text/html, application/json, */*";
+                request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes("username:password"));
+                request.PreAuthenticate = false;
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    string[] ar = reader.ReadToEnd().Split('\n');
+                    return (dynamic) JsonConvert.DeserializeObject(string.Join("\n", ar.Skip(6).Take(ar.Length - 6)));
+                    
+                }
+            } catch(Exception err)
+            {
+                Console.WriteLine(err);
+                return null;
+            }
             
-   
-            
+                
         }
 
         private void fillInData()
