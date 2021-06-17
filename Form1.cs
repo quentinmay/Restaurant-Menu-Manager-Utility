@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Linq;
+using Restaurant_Menu;
 
 namespace Restaurant_Menu
 {
@@ -16,7 +17,11 @@ namespace Restaurant_Menu
         public Form1()
         {
             InitializeComponent();
+            
         }
+
+       
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -81,13 +86,17 @@ namespace Restaurant_Menu
             textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
 
 
+        
+            
             //Populate existing items combobox
-            foreach(dynamic category in jsonMenu.categories) {
+            foreach (dynamic category in jsonMenu.categories) {
                 comboBoxCategory.Items.Add((string)category.categoryName);
+                ITEMSlistBox1.Items.Add((string)category.categoryName);
             }
         }
         private void clearData()
         {
+            //clears all boxes on the screen
             textBoxNewItemName.Clear();
             textBoxNewItemPrice.Clear();
             textBoxCurrentItemName.Clear();
@@ -95,6 +104,7 @@ namespace Restaurant_Menu
             textBoxRestaurantName.Clear();
             textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
+            comboBoxCategory.Text = string.Empty;
             comboBoxSelectItem.Text = string.Empty;
         }
 
@@ -117,6 +127,31 @@ namespace Restaurant_Menu
             {
                 MessageBox.Show(err.Message);
             }
+        }
+
+        private void textBoxURL_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNewItemName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
