@@ -16,11 +16,11 @@ namespace Restaurant_Menu
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
-       
-        
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -39,7 +39,7 @@ namespace Restaurant_Menu
 
         }
 
-         private void openJson(string filePath)
+        private void openJson(string filePath)
         {
 
             this.jsonMenu = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
@@ -53,7 +53,7 @@ namespace Restaurant_Menu
 
                 HttpClient client = new HttpClient();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(jsonURL);
-                
+
                 request.ContentType = "application/json; charset=utf-8";
                 request.Accept = "text/html, application/json, */*";
                 request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes("username:password"));
@@ -63,16 +63,17 @@ namespace Restaurant_Menu
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     string[] ar = reader.ReadToEnd().Split('\n');
-                    return (dynamic) JsonConvert.DeserializeObject(string.Join("\n", ar.Skip(6).Take(ar.Length - 6)));
-                    
+                    return (dynamic)JsonConvert.DeserializeObject(string.Join("\n", ar.Skip(6).Take(ar.Length - 6)));
+
                 }
-            } catch(Exception err)
+            }
+            catch (Exception err)
             {
                 Console.WriteLine(err);
                 return null;
             }
-            
-                
+
+
         }
 
         private void fillInData()
@@ -87,7 +88,8 @@ namespace Restaurant_Menu
 
 
             //Populate existing items combobox
-            foreach (dynamic category in jsonMenu.categories) {
+            foreach (dynamic category in jsonMenu.categories)
+            {
                 comboBoxCategory.Items.Add((string)category.categoryName);
 
 
@@ -97,7 +99,7 @@ namespace Restaurant_Menu
                     ListViewItem tmp = new ListViewItem((string)category.categoryName);
                     tmp.SubItems.Add((string)item.itemName);
                     tmp.SubItems.Add((string)item.itemPrice);
-                    
+
                     listViewItems.Items.Add(tmp);
                 }
             }
@@ -112,8 +114,12 @@ namespace Restaurant_Menu
             textBoxRestaurantName.Clear();
             textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
-            comboBoxCategory.Text = string.Empty;
-            comboBoxSelectItem.Text = string.Empty;
+            comboBoxCategory.Items.Clear();
+            comboBoxSelectItem.Items.Clear();
+            listViewItems.Clear();
+
+            textBoxCurrentItemName.Enabled = false;
+            textBoxCurrentItemPrice.Enabled = false;
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
@@ -170,6 +176,71 @@ namespace Restaurant_Menu
         private void listViewItems_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changeCurrentCategory(comboBoxCategory.SelectedItem.ToString());
+        }
+
+        private void changeCurrentCategory(string selectedCategory)
+        {
+            //Disable editing currentItem until we populate later
+            textBoxCurrentItemName.Enabled = false;
+            textBoxCurrentItemName.Clear();
+            textBoxCurrentItemPrice.Enabled = false;
+            textBoxCurrentItemPrice.Clear();
+
+
+            comboBoxSelectItem.Items.Clear();
+
+            foreach (dynamic category in jsonMenu.categories)
+            {
+                if (category.categoryName == selectedCategory)
+                {
+                    //Fills in items
+                    foreach (dynamic item in category.categoryItems)
+                    {
+                        comboBoxSelectItem.Items.Add((string)item.itemName);
+                    }
+                }
+            }
+        }
+
+        private void comboBoxSelectItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changeCurrentItem(comboBoxSelectItem.SelectedItem.ToString());
+        }
+
+        private void changeCurrentItem(string selectedItem)
+        {
+            //Reenable textBoxes for current item since were now allowing edits to them.
+            textBoxCurrentItemName.Enabled = true;
+            textBoxCurrentItemPrice.Enabled = true;
+
+            dynamic itemObject = findItem(comboBoxCategory.SelectedItem.ToString(), selectedItem);
+            textBoxCurrentItemName.Text = selectedItem;
+
+            textBoxCurrentItemPrice.Text = itemObject.itemPrice;
+        }
+
+        private dynamic findItem(string category, string itemName)
+        {
+            foreach (dynamic currentCategory in jsonMenu.categories)
+            {
+                if (currentCategory.categoryName == category)
+                {
+                    foreach (dynamic item in currentCategory.categoryItems)
+                    {
+                        if (item.itemName == itemName)
+                        {
+                            return item;
+                        }
+                            
+                    }
+                }
+            }
+            return null; //Couldnt find item.
         }
     }
 }

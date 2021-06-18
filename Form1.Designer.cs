@@ -68,6 +68,8 @@ namespace Restaurant_Menu
             this.itemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxItemCategory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +85,7 @@ namespace Restaurant_Menu
             // 
             // textBoxNewItemName
             // 
-            this.textBoxNewItemName.Location = new System.Drawing.Point(74, 81);
+            this.textBoxNewItemName.Location = new System.Drawing.Point(87, 107);
             this.textBoxNewItemName.Name = "textBoxNewItemName";
             this.textBoxNewItemName.Size = new System.Drawing.Size(100, 20);
             this.textBoxNewItemName.TabIndex = 1;
@@ -92,7 +94,7 @@ namespace Restaurant_Menu
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 84);
+            this.label1.Location = new System.Drawing.Point(26, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 2;
@@ -101,7 +103,7 @@ namespace Restaurant_Menu
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 140);
+            this.label2.Location = new System.Drawing.Point(24, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 4;
@@ -109,7 +111,7 @@ namespace Restaurant_Menu
             // 
             // textBoxNewItemPrice
             // 
-            this.textBoxNewItemPrice.Location = new System.Drawing.Point(74, 137);
+            this.textBoxNewItemPrice.Location = new System.Drawing.Point(87, 141);
             this.textBoxNewItemPrice.Name = "textBoxNewItemPrice";
             this.textBoxNewItemPrice.Size = new System.Drawing.Size(100, 20);
             this.textBoxNewItemPrice.TabIndex = 3;
@@ -165,16 +167,13 @@ namespace Restaurant_Menu
             // 
             // comboBoxSelectItem
             // 
+            this.comboBoxSelectItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectItem.FormattingEnabled = true;
-            this.comboBoxSelectItem.Items.AddRange(new object[] {
-            "Burger",
-            "Taco",
-            "Steak",
-            "Large Soda"});
             this.comboBoxSelectItem.Location = new System.Drawing.Point(471, 140);
             this.comboBoxSelectItem.Name = "comboBoxSelectItem";
             this.comboBoxSelectItem.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSelectItem.TabIndex = 12;
+            this.comboBoxSelectItem.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectItem_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -217,6 +216,7 @@ namespace Restaurant_Menu
             // 
             // textBoxCurrentItemPrice
             // 
+            this.textBoxCurrentItemPrice.Enabled = false;
             this.textBoxCurrentItemPrice.Location = new System.Drawing.Point(471, 224);
             this.textBoxCurrentItemPrice.Name = "textBoxCurrentItemPrice";
             this.textBoxCurrentItemPrice.Size = new System.Drawing.Size(100, 20);
@@ -233,6 +233,7 @@ namespace Restaurant_Menu
             // 
             // textBoxCurrentItemName
             // 
+            this.textBoxCurrentItemName.Enabled = false;
             this.textBoxCurrentItemName.Location = new System.Drawing.Point(471, 178);
             this.textBoxCurrentItemName.Name = "textBoxCurrentItemName";
             this.textBoxCurrentItemName.Size = new System.Drawing.Size(100, 20);
@@ -318,16 +319,13 @@ namespace Restaurant_Menu
             // 
             // comboBoxCategory
             // 
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Items.AddRange(new object[] {
-            "Burger",
-            "Taco",
-            "Steak",
-            "Large Soda"});
             this.comboBoxCategory.Location = new System.Drawing.Point(471, 88);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCategory.TabIndex = 28;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // buttonClearAll
             // 
@@ -355,6 +353,7 @@ namespace Restaurant_Menu
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(158, 20);
             this.textBoxURL.TabIndex = 31;
+            this.textBoxURL.Text = "http://149.248.9.96/tacoshop.json";
             this.textBoxURL.TextChanged += new System.EventHandler(this.textBoxURL_TextChanged);
             // 
             // pictureBox1
@@ -395,12 +394,12 @@ namespace Restaurant_Menu
             // itemPrice
             // 
             this.itemPrice.Text = "Price";
-            this.itemPrice.Width = 57;
+            this.itemPrice.Width = 46;
             // 
             // itemName
             // 
             this.itemName.Text = "Name";
-            this.itemName.Width = 77;
+            this.itemName.Width = 66;
             // 
             // label3
             // 
@@ -411,12 +410,30 @@ namespace Restaurant_Menu
             this.label3.TabIndex = 41;
             this.label3.Text = "All Menu Items";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 77);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.TabIndex = 43;
+            this.label14.Text = "Item Category:";
+            // 
+            // textBoxItemCategory
+            // 
+            this.textBoxItemCategory.Location = new System.Drawing.Point(87, 74);
+            this.textBoxItemCategory.Name = "textBoxItemCategory";
+            this.textBoxItemCategory.Size = new System.Drawing.Size(100, 20);
+            this.textBoxItemCategory.TabIndex = 42;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1101, 506);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBoxItemCategory);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listViewItems);
             this.Controls.Add(this.label13);
@@ -501,6 +518,8 @@ namespace Restaurant_Menu
         private System.Windows.Forms.ColumnHeader itemName;
         private System.Windows.Forms.ColumnHeader itemPrice;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBoxItemCategory;
     }
 }
 
