@@ -87,5 +87,17 @@
   <ItemGroup>
     <None Include="Resources\Smash.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\360_F_248448796_BbU5oGbSVPCNzDGCShRAZ3sXX2GiqKKr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_0298.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
