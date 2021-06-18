@@ -85,12 +85,21 @@ namespace Restaurant_Menu
             textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
 
 
-        
-            
+
             //Populate existing items combobox
             foreach (dynamic category in jsonMenu.categories) {
                 comboBoxCategory.Items.Add((string)category.categoryName);
-                ITEMSlistBox1.Items.Add((string)category.categoryName);
+
+
+                //Fills in listViewItems
+                foreach (dynamic item in category.categoryItems)
+                {
+                    ListViewItem tmp = new ListViewItem((string)category.categoryName);
+                    tmp.SubItems.Add((string)item.itemName);
+                    tmp.SubItems.Add((string)item.itemPrice);
+                    
+                    listViewItems.Items.Add(tmp);
+                }
             }
         }
         private void clearData()
@@ -149,6 +158,16 @@ namespace Restaurant_Menu
         }
 
         private void textBoxNewItemName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewItems_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

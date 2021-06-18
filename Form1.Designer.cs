@@ -63,10 +63,11 @@ namespace Restaurant_Menu
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ITEMS = new System.Windows.Forms.Label();
+            this.listViewItems = new System.Windows.Forms.ListView();
+            this.itemCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
-            this.Pricelistbox = new System.Windows.Forms.ListBox();
-            this.ITEMSlistBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -371,39 +372,44 @@ namespace Restaurant_Menu
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // ITEMS
+            // listViewItems
             // 
-            this.ITEMS.AutoSize = true;
-            this.ITEMS.Location = new System.Drawing.Point(843, 256);
-            this.ITEMS.Name = "ITEMS";
-            this.ITEMS.Size = new System.Drawing.Size(40, 13);
-            this.ITEMS.TabIndex = 36;
-            this.ITEMS.Text = "ITEMS";
+            this.listViewItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.itemCategory,
+            this.itemName,
+            this.itemPrice});
+            this.listViewItems.HideSelection = false;
+            this.listViewItems.Location = new System.Drawing.Point(846, 261);
+            this.listViewItems.Name = "listViewItems";
+            this.listViewItems.Size = new System.Drawing.Size(185, 143);
+            this.listViewItems.TabIndex = 40;
+            this.listViewItems.UseCompatibleStateImageBehavior = false;
+            this.listViewItems.View = System.Windows.Forms.View.Details;
+            this.listViewItems.SelectedIndexChanged += new System.EventHandler(this.listViewItems_SelectedIndexChanged);
+            // 
+            // itemCategory
+            // 
+            this.itemCategory.Text = "Category";
+            this.itemCategory.Width = 69;
+            // 
+            // itemPrice
+            // 
+            this.itemPrice.Text = "Price";
+            this.itemPrice.Width = 57;
+            // 
+            // itemName
+            // 
+            this.itemName.Text = "Name";
+            this.itemName.Width = 77;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(944, 256);
+            this.label3.Location = new System.Drawing.Point(843, 246);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "PRICE";
-            // 
-            // Pricelistbox
-            // 
-            this.Pricelistbox.FormattingEnabled = true;
-            this.Pricelistbox.Location = new System.Drawing.Point(947, 278);
-            this.Pricelistbox.Name = "Pricelistbox";
-            this.Pricelistbox.Size = new System.Drawing.Size(50, 134);
-            this.Pricelistbox.TabIndex = 39;
-            // 
-            // ITEMSlistBox1
-            // 
-            this.ITEMSlistBox1.FormattingEnabled = true;
-            this.ITEMSlistBox1.Location = new System.Drawing.Point(824, 278);
-            this.ITEMSlistBox1.Name = "ITEMSlistBox1";
-            this.ITEMSlistBox1.Size = new System.Drawing.Size(89, 134);
-            this.ITEMSlistBox1.TabIndex = 38;
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "All Menu Items";
             // 
             // Form1
             // 
@@ -411,10 +417,8 @@ namespace Restaurant_Menu
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1101, 506);
-            this.Controls.Add(this.Pricelistbox);
-            this.Controls.Add(this.ITEMSlistBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.ITEMS);
+            this.Controls.Add(this.listViewItems);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBoxURL);
             this.Controls.Add(this.buttonClearAll);
@@ -492,10 +496,11 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxURL;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label ITEMS;
+        private System.Windows.Forms.ListView listViewItems;
+        private System.Windows.Forms.ColumnHeader itemCategory;
+        private System.Windows.Forms.ColumnHeader itemName;
+        private System.Windows.Forms.ColumnHeader itemPrice;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox Pricelistbox;
-        private System.Windows.Forms.ListBox ITEMSlistBox1;
     }
 }
 
