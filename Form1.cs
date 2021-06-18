@@ -8,12 +8,14 @@ using System.Net.Http;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Restaurant_Menu
 {
     public partial class Form1 : Form
     {
         private dynamic jsonMenu;
+        private List<string> mediaFilesToUpload;
         public Form1()
         {
             InitializeComponent();
@@ -98,7 +100,7 @@ namespace Restaurant_Menu
             foreach (dynamic category in jsonMenu.categories)
             {
                 comboBoxCategory.Items.Add((string)category.categoryName);
-
+                comboBoxNewItemCategory.Items.Add((string)category.categoryName);
 
                 //Fills in listViewItems
                 foreach (dynamic item in category.categoryItems)
@@ -122,8 +124,9 @@ namespace Restaurant_Menu
             textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
             comboBoxCategory.Items.Clear();
+            comboBoxNewItemCategory.Items.Clear();
             comboBoxSelectItem.Items.Clear();
-            listViewItems.Clear();
+            listViewItems.Items.Clear();
 
             textBoxCurrentItemName.Enabled = false;
             textBoxCurrentItemPrice.Enabled = false;
@@ -263,7 +266,7 @@ namespace Restaurant_Menu
         }
         private void saveChangesToItem()
         {
-            if (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
+            if (comboBoxSelectItem.SelectedIndex != -1)
             {
                 dynamic changedItem = getItemByName(comboBoxSelectItem.SelectedItem.ToString());
                 if (changedItem.itemName != textBoxCurrentItemName.Text) //name change, so check if that name is already taken.
@@ -352,10 +355,54 @@ namespace Restaurant_Menu
             return null;
         }
 
+        private dynamic getCategoryByName(string categoryName)
+        {
+            foreach (dynamic category in jsonMenu.categories)
+            {
+                if (category.categoryName == categoryName)
+                {
+                    return category;
+                }
+            }
+            return null;
+        }
+
         private void deleteItemByName(string itemName)
         {
             dynamic searchItem = getItemByName(itemName);
             searchItem.Remove();
+        }
+
+        private void buttonAddNewItem_Click(object sender, EventArgs e)
+        {
+            addNewItem();
+
+        }
+        private void addNewItem()
+        {
+
+            if (!itemExists(textBoxNewItemName.Text) && !string.IsNullOrEmpty(textBoxNewItemName.Text) && !string.IsNullOrEmpty(textBoxNewItemPrice.Text) && comboBoxNewItemCategory.SelectedIndex != -1)
+            {
+                JObject newItem = new JObject();
+                newItem.Add("itemName", textBoxNewItemName.Text);
+                newItem.Add("itemDescription", textBoxNewItemDescription.Text);
+                newItem.Add("itemPrice", textBoxNewItemPrice.Text);
+                newItem.Add("itemPicture", "");
+                //dynamic newItem = new System.Dynamic.ExpandoObject();
+                // newItem.itemName = textBoxNewItemName.Text;
+                //newItem.itemPrice = textBoxNewItemPrice.Text;
+                //newItem.itemDescription = textBoxNewItemDescription.Text;
+                //newItem.itemPicture = "";
+                dynamic category = getCategoryByName(comboBoxNewItemCategory.SelectedItem.ToString());
+                
+                
+                category.categoryItems.Add(newItem);
+                refreshAllData();
+            }
+            else
+            {
+                MessageBox.Show("There was a problem creating this item.");
+            }
         }
     }
 }
