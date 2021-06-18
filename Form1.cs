@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Restaurant_Menu
 {
@@ -215,7 +216,18 @@ namespace Restaurant_Menu
 
         private void comboBoxSelectItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            changeCurrentItem(comboBoxSelectItem.SelectedItem.ToString());
+            if (comboBoxSelectItem.SelectedIndex == -1)
+            {
+                textBoxCurrentItemName.Enabled = false;
+                textBoxCurrentItemPrice.Enabled = false;
+                textBoxCurrentItemName.Clear();
+                textBoxCurrentItemPrice.Clear();
+
+            } else
+            {
+                changeCurrentItem(comboBoxSelectItem.SelectedItem.ToString());
+            }
+            
         }
 
         private void changeCurrentItem(string selectedItem)
@@ -224,25 +236,21 @@ namespace Restaurant_Menu
             textBoxCurrentItemName.Enabled = true;
             textBoxCurrentItemPrice.Enabled = true;
 
-            dynamic itemObject = findItem(comboBoxCategory.SelectedItem.ToString(), selectedItem);
+            dynamic itemObject = getItemByName(selectedItem);
             textBoxCurrentItemName.Text = selectedItem;
 
             textBoxCurrentItemPrice.Text = itemObject.itemPrice;
         }
 
-        private dynamic findItem(string category, string itemName)
+        private dynamic getItemByName( string itemName)
         {
             foreach (dynamic currentCategory in jsonMenu.categories)
             {
-                if (currentCategory.categoryName == category)
+                foreach (dynamic item in currentCategory.categoryItems)
                 {
-                    foreach (dynamic item in currentCategory.categoryItems)
+                    if (item.itemName == itemName)
                     {
-                        if (item.itemName == itemName)
-                        {
-                            return item;
-                        }
-                            
+                        return item;
                     }
                 }
             }
@@ -257,7 +265,7 @@ namespace Restaurant_Menu
         {
             if (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
             {
-                dynamic changedItem = findItem(comboBoxCategory.SelectedItem.ToString(), comboBoxSelectItem.SelectedItem.ToString());
+                dynamic changedItem = getItemByName(comboBoxSelectItem.SelectedItem.ToString());
                 if (changedItem.itemName != textBoxCurrentItemName.Text) //name change, so check if that name is already taken.
                 {
                     if (!itemExists(textBoxCurrentItemName.Text))
@@ -301,6 +309,53 @@ namespace Restaurant_Menu
                 
             }
             return false;
+        }
+
+        private void buttonDeleteItem_Click(object sender, EventArgs e)
+        {
+            deleteCurrentItem();
+        }
+
+        private void deleteCurrentItem()
+        {
+            if (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
+            {
+                deleteItemByName(comboBoxSelectItem.SelectedItem.ToString());
+                comboBoxSelectItem.Items.Remove(comboBoxSelectItem.SelectedItem);
+                textBoxCurrentItemName.Enabled = false;
+                textBoxCurrentItemPrice.Enabled = false;
+                textBoxCurrentItemName.Clear();
+                textBoxCurrentItemPrice.Clear();
+                refreshListViewItems();
+
+            } else
+            {
+                MessageBox.Show("No item to delete.");
+            }
+        }
+
+        private dynamic getItemCategory(string itemName)
+        {
+
+            foreach (dynamic category in jsonMenu.categories)
+            {
+                foreach (dynamic item in category.categoryItems)
+                {
+                    if (item.itemName == itemName)
+                    {
+                        return category;
+                    }
+
+                }
+
+            }
+            return null;
+        }
+
+        private void deleteItemByName(string itemName)
+        {
+            dynamic searchItem = getItemByName(itemName);
+            searchItem.Remove();
         }
     }
 }

@@ -193,6 +193,7 @@ namespace Restaurant_Menu
             this.buttonDeleteItem.TabIndex = 14;
             this.buttonDeleteItem.Text = "Delete Item From Menu";
             this.buttonDeleteItem.UseVisualStyleBackColor = false;
+            this.buttonDeleteItem.Click += new System.EventHandler(this.buttonDeleteItem_Click);
             // 
             // buttonSaveMenu
             // 
