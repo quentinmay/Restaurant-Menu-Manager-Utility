@@ -134,6 +134,11 @@ namespace Restaurant_Menu
 
             listViewItems.Items.Clear();
 
+            textBoxNewItemDescription.Clear();
+
+            textBoxNewCategory.Clear();
+            textBoxNewCategoryDescription.Clear();
+
             textBoxCurrentItemName.Enabled = false;
             textBoxCurrentItemPrice.Enabled = false;
         }
