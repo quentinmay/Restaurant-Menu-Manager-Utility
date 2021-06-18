@@ -73,17 +73,29 @@ namespace Restaurant_Menu
             this.textBoxNewItemDescription = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBoxNewItemCategory = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBoxNewCategory = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxNewCategoryDescription = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.buttonNewCategory = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.buttonDeleteCategory = new System.Windows.Forms.Button();
+            this.comboBoxDeleteCategory = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddNewItem
             // 
             this.buttonAddNewItem.BackColor = System.Drawing.Color.Lime;
-            this.buttonAddNewItem.Location = new System.Drawing.Point(305, 359);
+            this.buttonAddNewItem.Location = new System.Drawing.Point(312, 358);
             this.buttonAddNewItem.Name = "buttonAddNewItem";
             this.buttonAddNewItem.Size = new System.Drawing.Size(107, 76);
             this.buttonAddNewItem.TabIndex = 0;
-            this.buttonAddNewItem.Text = "Add New Item To Menu";
+            this.buttonAddNewItem.Text = "Add New Item";
             this.buttonAddNewItem.UseVisualStyleBackColor = false;
             this.buttonAddNewItem.Click += new System.EventHandler(this.buttonAddNewItem_Click);
             // 
@@ -122,7 +134,7 @@ namespace Restaurant_Menu
             // 
             // buttonAddItemPicture
             // 
-            this.buttonAddItemPicture.Location = new System.Drawing.Point(254, 265);
+            this.buttonAddItemPicture.Location = new System.Drawing.Point(290, 282);
             this.buttonAddItemPicture.Name = "buttonAddItemPicture";
             this.buttonAddItemPicture.Size = new System.Drawing.Size(75, 52);
             this.buttonAddItemPicture.TabIndex = 6;
@@ -446,7 +458,7 @@ namespace Restaurant_Menu
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(9, 35);
+            this.label16.Location = new System.Drawing.Point(9, 13);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(208, 31);
             this.label16.TabIndex = 46;
@@ -461,12 +473,126 @@ namespace Restaurant_Menu
             this.comboBoxNewItemCategory.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNewItemCategory.TabIndex = 47;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 55);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 13);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Category Name:";
+            // 
+            // textBoxNewCategory
+            // 
+            this.textBoxNewCategory.Location = new System.Drawing.Point(97, 52);
+            this.textBoxNewCategory.Name = "textBoxNewCategory";
+            this.textBoxNewCategory.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNewCategory.TabIndex = 48;
+            this.textBoxNewCategory.TextChanged += new System.EventHandler(this.textBoxNewCategory_TextChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(28, 92);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(63, 26);
+            this.label18.TabIndex = 53;
+            this.label18.Text = "Category\r\nDescription:";
+            // 
+            // textBoxNewCategoryDescription
+            // 
+            this.textBoxNewCategoryDescription.Location = new System.Drawing.Point(97, 83);
+            this.textBoxNewCategoryDescription.Multiline = true;
+            this.textBoxNewCategoryDescription.Name = "textBoxNewCategoryDescription";
+            this.textBoxNewCategoryDescription.Size = new System.Drawing.Size(138, 82);
+            this.textBoxNewCategoryDescription.TabIndex = 52;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 200);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 52);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Add Category Picture";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Restaurant_Menu.Properties.Resources.Smash;
+            this.pictureBox2.Location = new System.Drawing.Point(97, 183);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(89, 89);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 50;
+            this.pictureBox2.TabStop = false;
+            // 
+            // buttonNewCategory
+            // 
+            this.buttonNewCategory.BackColor = System.Drawing.Color.Lime;
+            this.buttonNewCategory.Location = new System.Drawing.Point(31, 278);
+            this.buttonNewCategory.Name = "buttonNewCategory";
+            this.buttonNewCategory.Size = new System.Drawing.Size(107, 76);
+            this.buttonNewCategory.TabIndex = 54;
+            this.buttonNewCategory.Text = "Add New Category";
+            this.buttonNewCategory.UseVisualStyleBackColor = false;
+            this.buttonNewCategory.Click += new System.EventHandler(this.buttonNewCategory_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(9, 357);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(235, 31);
+            this.label19.TabIndex = 55;
+            this.label19.Text = "Delete Category:";
+            // 
+            // buttonDeleteCategory
+            // 
+            this.buttonDeleteCategory.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteCategory.Location = new System.Drawing.Point(167, 398);
+            this.buttonDeleteCategory.Name = "buttonDeleteCategory";
+            this.buttonDeleteCategory.Size = new System.Drawing.Size(68, 50);
+            this.buttonDeleteCategory.TabIndex = 56;
+            this.buttonDeleteCategory.Text = "Delete Category";
+            this.buttonDeleteCategory.UseVisualStyleBackColor = false;
+            this.buttonDeleteCategory.Click += new System.EventHandler(this.buttonDeleteCategory_Click);
+            // 
+            // comboBoxDeleteCategory
+            // 
+            this.comboBoxDeleteCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDeleteCategory.FormattingEnabled = true;
+            this.comboBoxDeleteCategory.Location = new System.Drawing.Point(31, 414);
+            this.comboBoxDeleteCategory.Name = "comboBoxDeleteCategory";
+            this.comboBoxDeleteCategory.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxDeleteCategory.TabIndex = 58;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(28, 398);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(75, 13);
+            this.label20.TabIndex = 57;
+            this.label20.Text = "Item Category:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1101, 506);
+            this.Controls.Add(this.comboBoxDeleteCategory);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.buttonDeleteCategory);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.buttonNewCategory);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.textBoxNewCategoryDescription);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.textBoxNewCategory);
             this.Controls.Add(this.comboBoxNewItemCategory);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -511,6 +637,7 @@ namespace Restaurant_Menu
             this.Text = "Editting TacoBellMenu.json";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,6 +688,17 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxNewItemDescription;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox comboBoxNewItemCategory;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBoxNewCategory;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxNewCategoryDescription;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button buttonNewCategory;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button buttonDeleteCategory;
+        private System.Windows.Forms.ComboBox comboBoxDeleteCategory;
+        private System.Windows.Forms.Label label20;
     }
 }
 

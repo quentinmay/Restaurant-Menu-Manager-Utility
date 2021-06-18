@@ -101,6 +101,7 @@ namespace Restaurant_Menu
             {
                 comboBoxCategory.Items.Add((string)category.categoryName);
                 comboBoxNewItemCategory.Items.Add((string)category.categoryName);
+                comboBoxDeleteCategory.Items.Add((string)category.categoryName);
 
                 //Fills in listViewItems
                 foreach (dynamic item in category.categoryItems)
@@ -126,6 +127,8 @@ namespace Restaurant_Menu
             comboBoxCategory.Items.Clear();
             comboBoxNewItemCategory.Items.Clear();
             comboBoxSelectItem.Items.Clear();
+            comboBoxDeleteCategory.Items.Clear();
+
             listViewItems.Items.Clear();
 
             textBoxCurrentItemName.Enabled = false;
@@ -388,11 +391,6 @@ namespace Restaurant_Menu
                 newItem.Add("itemDescription", textBoxNewItemDescription.Text);
                 newItem.Add("itemPrice", textBoxNewItemPrice.Text);
                 newItem.Add("itemPicture", "");
-                //dynamic newItem = new System.Dynamic.ExpandoObject();
-                // newItem.itemName = textBoxNewItemName.Text;
-                //newItem.itemPrice = textBoxNewItemPrice.Text;
-                //newItem.itemDescription = textBoxNewItemDescription.Text;
-                //newItem.itemPicture = "";
                 dynamic category = getCategoryByName(comboBoxNewItemCategory.SelectedItem.ToString());
                 
                 
@@ -403,6 +401,57 @@ namespace Restaurant_Menu
             {
                 MessageBox.Show("There was a problem creating this item.");
             }
+        }
+
+        private void textBoxNewCategory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonNewCategory_Click(object sender, EventArgs e)
+        {
+            addNewCategory();
+        }
+
+        private void addNewCategory()
+        {
+
+            if ((getCategoryByName(textBoxNewCategory.Text) == null) && !string.IsNullOrEmpty(textBoxNewCategory.Text))
+            {
+                JObject newCategory = new JObject();
+                newCategory.Add("categoryName", textBoxNewCategory.Text);
+                newCategory.Add("categoryDescription", textBoxNewCategoryDescription.Text);
+                newCategory.Add("categoryPicture", "");
+                newCategory.Add("categoryItems", new JArray());
+
+
+                jsonMenu.categories.Add(newCategory);
+                refreshAllData();
+            }
+            else
+            {
+                MessageBox.Show("There was a problem creating this category.");
+            }
+        }
+
+        private void buttonDeleteCategory_Click(object sender, EventArgs e)
+        {
+            if (comboBoxDeleteCategory.SelectedIndex != -1)
+            {
+                deleteCategoryByName(comboBoxDeleteCategory.SelectedItem.ToString());
+                refreshAllData();
+            } else
+            {
+                MessageBox.Show("There was a problem deleting this category.");
+            }
+            
+            
+        }
+
+        private void deleteCategoryByName(string categoryName)
+        {
+            dynamic searchCategory = getCategoryByName(categoryName);
+            searchCategory.Remove();
         }
     }
 }
