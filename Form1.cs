@@ -34,6 +34,7 @@ namespace Restaurant_Menu
 
         async private void buttonOpenJSON_Click(object sender, EventArgs e)
         {
+            clearData();
             jsonMenu = await downloadJson(textBoxURL.Text);
             //Console.WriteLine(jsonMenu);
             fillInData();
@@ -87,8 +88,12 @@ namespace Restaurant_Menu
             textBoxRestaurantName.Text = (string)jsonMenu.restaurantName;
             textBoxRestaurantIcon.Text = (string)jsonMenu.restaurantIcon;
             textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
-
-
+            foreach (dynamic category in jsonMenu.categories)
+            {
+                comboBoxCategory.Items.Add((string)category.categoryName);
+                comboBoxNewItemCategory.Items.Add((string)category.categoryName);
+                comboBoxDeleteCategory.Items.Add((string)category.categoryName);
+            }
             //Populate existing items combobox
             refreshListViewItems();
 
@@ -99,9 +104,7 @@ namespace Restaurant_Menu
             listViewItems.Items.Clear();
             foreach (dynamic category in jsonMenu.categories)
             {
-                comboBoxCategory.Items.Add((string)category.categoryName);
-                comboBoxNewItemCategory.Items.Add((string)category.categoryName);
-                comboBoxDeleteCategory.Items.Add((string)category.categoryName);
+
 
                 //Fills in listViewItems
                 foreach (dynamic item in category.categoryItems)
