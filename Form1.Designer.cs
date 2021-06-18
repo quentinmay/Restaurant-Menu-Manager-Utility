@@ -307,6 +307,7 @@ namespace Restaurant_Menu
             this.buttonSaveItem.TabIndex = 27;
             this.buttonSaveItem.Text = "Save Changes To Item ";
             this.buttonSaveItem.UseVisualStyleBackColor = false;
+            this.buttonSaveItem.Click += new System.EventHandler(this.buttonSaveItem_Click);
             // 
             // label12
             // 

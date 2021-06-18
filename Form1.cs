@@ -86,8 +86,14 @@ namespace Restaurant_Menu
             textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
 
 
-
             //Populate existing items combobox
+            refreshListViewItems();
+
+        }
+
+        private void refreshListViewItems()
+        {
+            listViewItems.Items.Clear();
             foreach (dynamic category in jsonMenu.categories)
             {
                 comboBoxCategory.Items.Add((string)category.categoryName);
@@ -134,7 +140,7 @@ namespace Restaurant_Menu
                 WebClient client = new WebClient();
                 string myFile = @"C:\Users\Public\testupload.txt";
                 client.Credentials = CredentialCache.DefaultCredentials;
-                client.UploadFile(@"http://192.168.0.200:80", "POST", myFile);
+                client.UploadFile(@"http://192.168.0.200:80", "POST", myFile); //Switch to textBoxURL.Text
                 client.Dispose();
             }
             catch (Exception err)
@@ -241,6 +247,60 @@ namespace Restaurant_Menu
                 }
             }
             return null; //Couldnt find item.
+        }
+
+        private void buttonSaveItem_Click(object sender, EventArgs e)
+        {
+            saveChangesToItem();
+        }
+        private void saveChangesToItem()
+        {
+            if (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
+            {
+                dynamic changedItem = findItem(comboBoxCategory.SelectedItem.ToString(), comboBoxSelectItem.SelectedItem.ToString());
+                if (changedItem.itemName != textBoxCurrentItemName.Text) //name change, so check if that name is already taken.
+                {
+                    if (!itemExists(textBoxCurrentItemName.Text))
+                    {
+                        changedItem.itemName = textBoxCurrentItemName.Text;
+                        changedItem.itemPrice = textBoxCurrentItemPrice.Text;
+                        comboBoxSelectItem.Items[comboBoxSelectItem.SelectedIndex] = textBoxCurrentItemName.Text;
+                    } else
+                    {
+                        MessageBox.Show("Couldn't be done because an item with that name already exists.");
+                    }
+                } else //Then its probably just price change.
+                {
+                    changedItem.itemPrice = textBoxCurrentItemPrice.Text;
+                }
+                refreshListViewItems();
+                
+                
+            }
+
+        }
+
+        private void refreshAllData()
+        {
+            clearData();
+            fillInData();
+        }
+
+        private bool itemExists(string itemName)
+        {
+            foreach (dynamic category in jsonMenu.categories)
+            {
+                foreach (dynamic item in category.categoryItems)
+                {
+                    if (item.itemName == itemName)
+                    {
+                        return true;
+                    }
+
+                }
+                
+            }
+            return false;
         }
     }
 }
