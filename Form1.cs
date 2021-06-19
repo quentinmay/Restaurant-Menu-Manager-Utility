@@ -9,13 +9,16 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using System.Drawing;
 
 namespace Restaurant_Menu
 {
     public partial class Form1 : Form
     {
         private dynamic jsonMenu;
-        private List<string> mediaFilesToUpload;
+        private string categoryPicture = "";
+        private string itemPicture = "";
+        private List<string[]> mediaFilesToUpload = new List<string[]>();
         public Form1()
         {
             InitializeComponent();
@@ -141,6 +144,12 @@ namespace Restaurant_Menu
 
             textBoxCurrentItemName.Enabled = false;
             textBoxCurrentItemPrice.Enabled = false;
+
+            categoryPicture = "";
+            itemPicture = "";
+
+            pictureBoxCategoryPicture.Image = null;
+            pictureBoxItemPicture.Image = null;
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
@@ -150,17 +159,78 @@ namespace Restaurant_Menu
 
         private void buttonSaveMenu_Click(object sender, EventArgs e)
         {
+            uploadMenu(textBoxURL.Text, jsonMenu);
+            foreach(string[] picture in mediaFilesToUpload) {
+                uploadPicture(textBoxURL.Text, picture[0]);
+            }
+            mediaFilesToUpload.Clear();
+        }
+
+        private void uploadMenu(string urlString, dynamic jsonMenu)
+        {
             try
             {
                 WebClient client = new WebClient();
-                string myFile = @"C:\Users\Public\testupload.txt";
+                var url = new Uri(urlString);
+                JObject data = new JObject();
+                data.Add("fileName", url.LocalPath);
+                data.Add("menu", jsonMenu);
+
+                string dataString = JsonConvert.SerializeObject(data);
+
                 client.Credentials = CredentialCache.DefaultCredentials;
-                client.UploadFile(@"http://192.168.0.200:80", "POST", myFile); //Switch to textBoxURL.Text
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                client.UploadString("http://" + url.IdnHost + "/upload", "POST", dataString);
+
                 client.Dispose();
+                    
+                
+
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
+                Console.Write(err);
+            }
+        }
+
+        private void uploadPicture(string urlString, string picturePath)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                
+                var url = new Uri(urlString);
+
+                using (Image image = Image.FromFile(picturePath))
+                {
+                    using (MemoryStream m = new MemoryStream())
+                    {
+                        image.Save(m, image.RawFormat);
+                        byte[] imageBytes = m.ToArray();
+
+                        // Convert byte[] to Base64 String
+                        string base64String = Convert.ToBase64String(imageBytes);
+
+                        JObject data = new JObject();
+                        data.Add("fileName", Path.GetFileName(picturePath));
+                        data.Add("fileData", base64String);
+
+                        string dataString = JsonConvert.SerializeObject(data);
+                        client.Credentials = CredentialCache.DefaultCredentials;
+                        client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                        client.UploadString("http://" + url.IdnHost + "/picture", "POST", dataString);
+
+
+                        client.Dispose();
+                    }
+                }
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+                Console.Write(err);
             }
         }
 
@@ -398,7 +468,8 @@ namespace Restaurant_Menu
                 newItem.Add("itemName", textBoxNewItemName.Text);
                 newItem.Add("itemDescription", textBoxNewItemDescription.Text);
                 newItem.Add("itemPrice", textBoxNewItemPrice.Text);
-                newItem.Add("itemPicture", "");
+                newItem.Add("itemPicture", Path.GetFileName(itemPicture));
+                mediaFilesToUpload.Add(new string[] { itemPicture, "" });
                 dynamic category = getCategoryByName(comboBoxNewItemCategory.SelectedItem.ToString());
                 
                 
@@ -429,7 +500,8 @@ namespace Restaurant_Menu
                 JObject newCategory = new JObject();
                 newCategory.Add("categoryName", textBoxNewCategory.Text);
                 newCategory.Add("categoryDescription", textBoxNewCategoryDescription.Text);
-                newCategory.Add("categoryPicture", "");
+                newCategory.Add("categoryPicture", Path.GetFileName(categoryPicture));
+                mediaFilesToUpload.Add(new string[]{ categoryPicture, ""});
                 newCategory.Add("categoryItems", new JArray());
 
 
@@ -460,6 +532,23 @@ namespace Restaurant_Menu
         {
             dynamic searchCategory = getCategoryByName(categoryName);
             searchCategory.Remove();
+        }
+
+        private void buttonNewCategoryPicture_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseCategoryPicture = new OpenFileDialog();
+            if (chooseCategoryPicture.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(chooseCategoryPicture.FileName);
+
+                if (extension == ".jpeg" || extension == ".jpg" || extension == ".png")
+                {
+                    pictureBoxCategoryPicture.Image = Image.FromFile(chooseCategoryPicture.FileName);
+                    categoryPicture = chooseCategoryPicture.FileName;
+                    //do what you want with this image
+                }
+                // do something here with fdlg.FileName ;
+            }
         }
     }
 }

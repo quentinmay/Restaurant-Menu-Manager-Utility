@@ -61,12 +61,12 @@ namespace Restaurant_Menu
             this.buttonClearAll = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxURL = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxItemPicture = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listViewItems = new System.Windows.Forms.ListView();
             this.itemCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -77,15 +77,16 @@ namespace Restaurant_Menu
             this.textBoxNewCategory = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxNewCategoryDescription = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.buttonNewCategoryPicture = new System.Windows.Forms.Button();
+            this.pictureBoxCategoryPicture = new System.Windows.Forms.PictureBox();
             this.buttonNewCategory = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.buttonDeleteCategory = new System.Windows.Forms.Button();
             this.comboBoxDeleteCategory = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCategoryPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddNewItem
@@ -374,15 +375,14 @@ namespace Restaurant_Menu
             this.textBoxURL.Text = "http://149.248.9.96/tacoshop.json";
             this.textBoxURL.TextChanged += new System.EventHandler(this.textBoxURL_TextChanged);
             // 
-            // pictureBox1
+            // pictureBoxItemPicture
             // 
-            this.pictureBox1.Image = global::Restaurant_Menu.Properties.Resources.Smash;
-            this.pictureBox1.Location = new System.Drawing.Point(371, 265);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(89, 89);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxItemPicture.Location = new System.Drawing.Point(371, 265);
+            this.pictureBoxItemPicture.Name = "pictureBoxItemPicture";
+            this.pictureBoxItemPicture.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxItemPicture.TabIndex = 5;
+            this.pictureBoxItemPicture.TabStop = false;
             // 
             // contextMenuStrip1
             // 
@@ -409,15 +409,15 @@ namespace Restaurant_Menu
             this.itemCategory.Text = "Category";
             this.itemCategory.Width = 69;
             // 
-            // itemPrice
-            // 
-            this.itemPrice.Text = "Price";
-            this.itemPrice.Width = 42;
-            // 
             // itemName
             // 
             this.itemName.Text = "Name";
             this.itemName.Width = 97;
+            // 
+            // itemPrice
+            // 
+            this.itemPrice.Text = "Price";
+            this.itemPrice.Width = 42;
             // 
             // label3
             // 
@@ -507,24 +507,24 @@ namespace Restaurant_Menu
             this.textBoxNewCategoryDescription.Size = new System.Drawing.Size(138, 82);
             this.textBoxNewCategoryDescription.TabIndex = 52;
             // 
-            // button1
+            // buttonNewCategoryPicture
             // 
-            this.button1.Location = new System.Drawing.Point(16, 200);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 52);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Add Category Picture";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonNewCategoryPicture.Location = new System.Drawing.Point(16, 200);
+            this.buttonNewCategoryPicture.Name = "buttonNewCategoryPicture";
+            this.buttonNewCategoryPicture.Size = new System.Drawing.Size(75, 52);
+            this.buttonNewCategoryPicture.TabIndex = 51;
+            this.buttonNewCategoryPicture.Text = "Add Category Picture";
+            this.buttonNewCategoryPicture.UseVisualStyleBackColor = true;
+            this.buttonNewCategoryPicture.Click += new System.EventHandler(this.buttonNewCategoryPicture_Click);
             // 
-            // pictureBox2
+            // pictureBoxCategoryPicture
             // 
-            this.pictureBox2.Image = global::Restaurant_Menu.Properties.Resources.Smash;
-            this.pictureBox2.Location = new System.Drawing.Point(97, 183);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 89);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 50;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxCategoryPicture.Location = new System.Drawing.Point(97, 183);
+            this.pictureBoxCategoryPicture.Name = "pictureBoxCategoryPicture";
+            this.pictureBoxCategoryPicture.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxCategoryPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCategoryPicture.TabIndex = 50;
+            this.pictureBoxCategoryPicture.TabStop = false;
             // 
             // buttonNewCategory
             // 
@@ -576,6 +576,10 @@ namespace Restaurant_Menu
             this.label20.TabIndex = 57;
             this.label20.Text = "Item Category:";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialogAddCategory";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,8 +593,8 @@ namespace Restaurant_Menu
             this.Controls.Add(this.buttonNewCategory);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBoxNewCategoryDescription);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.buttonNewCategoryPicture);
+            this.Controls.Add(this.pictureBoxCategoryPicture);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textBoxNewCategory);
             this.Controls.Add(this.comboBoxNewItemCategory);
@@ -626,7 +630,7 @@ namespace Restaurant_Menu
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonAddItemPicture);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxItemPicture);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNewItemPrice);
             this.Controls.Add(this.label1);
@@ -636,8 +640,8 @@ namespace Restaurant_Menu
             this.Name = "Form1";
             this.Text = "Editting TacoBellMenu.json";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCategoryPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,7 +654,7 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNewItemPrice;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxItemPicture;
         private System.Windows.Forms.Button buttonAddItemPicture;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -692,13 +696,14 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxNewCategory;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxNewCategoryDescription;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button buttonNewCategoryPicture;
+        private System.Windows.Forms.PictureBox pictureBoxCategoryPicture;
         private System.Windows.Forms.Button buttonNewCategory;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button buttonDeleteCategory;
         private System.Windows.Forms.ComboBox comboBoxDeleteCategory;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
