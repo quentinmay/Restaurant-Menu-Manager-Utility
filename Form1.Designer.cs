@@ -378,7 +378,7 @@ namespace Restaurant_Menu
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(158, 20);
             this.textBoxURL.TabIndex = 31;
-            this.textBoxURL.Text = "http://192.168.0.200/tacoshop.json";
+            this.textBoxURL.Text = "http://149.248.9.96/sample.json";
             this.textBoxURL.TextChanged += new System.EventHandler(this.textBoxURL_TextChanged);
             // 
             // contextMenuStrip1

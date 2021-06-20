@@ -72,8 +72,7 @@ namespace Restaurant_Menu
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    string[] ar = reader.ReadToEnd().Split('\n');
-                    return (dynamic)JsonConvert.DeserializeObject(string.Join("\n", ar.Skip(6).Take(ar.Length - 6)));
+                    return (dynamic)JsonConvert.DeserializeObject(reader.ReadToEnd());
 
                 }
             }
@@ -88,7 +87,6 @@ namespace Restaurant_Menu
 
         private void fillInData()
         {
-            Console.WriteLine(jsonMenu.categories[0]);
             //Populate basic menu data.
             this.Text = "Editing " + (string)jsonMenu.restaurantName;
             textBoxRestaurantName.Text = (string)jsonMenu.restaurantName;
