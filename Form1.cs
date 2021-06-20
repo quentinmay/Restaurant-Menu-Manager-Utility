@@ -17,7 +17,8 @@ namespace Restaurant_Menu
     {
         private dynamic jsonMenu;
         private string categoryPicture = "";
-        private string itemPicture = "";
+        private string newItemPicture = "";
+        private string currentItemPicture = "";
         private List<string[]> mediaFilesToUpload = new List<string[]>();
         public Form1()
         {
@@ -41,6 +42,8 @@ namespace Restaurant_Menu
             jsonMenu = await downloadJson(textBoxURL.Text);
             //Console.WriteLine(jsonMenu);
             fillInData();
+            textBoxURL.Enabled = false;
+            buttonOpenJSON.Enabled = false;
             //string filePath = "C:\\Users\\Public\\tacoshop.json";
             //openJson(filePath);
 
@@ -125,11 +128,16 @@ namespace Restaurant_Menu
             //clears all boxes on the screen
             textBoxNewItemName.Clear();
             textBoxNewItemPrice.Clear();
+            textBoxNewItemDescription.Clear();
+
             textBoxCurrentItemName.Clear();
             textBoxCurrentItemPrice.Clear();
+            textBoxCurrentItemDescription.Clear();
+
             textBoxRestaurantName.Clear();
             textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
+
             comboBoxCategory.Items.Clear();
             comboBoxNewItemCategory.Items.Clear();
             comboBoxSelectItem.Items.Clear();
@@ -137,19 +145,22 @@ namespace Restaurant_Menu
 
             listViewItems.Items.Clear();
 
-            textBoxNewItemDescription.Clear();
+            
 
             textBoxNewCategory.Clear();
             textBoxNewCategoryDescription.Clear();
 
             textBoxCurrentItemName.Enabled = false;
             textBoxCurrentItemPrice.Enabled = false;
+            textBoxCurrentItemDescription.Enabled = false;
 
             categoryPicture = "";
-            itemPicture = "";
+            newItemPicture = "";
+            currentItemPicture = "";
 
             pictureBoxCategoryPicture.Image = null;
             pictureBoxItemPicture.Image = null;
+            pictureBoxCurrentItemPicture.Image = null;
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
@@ -157,16 +168,16 @@ namespace Restaurant_Menu
             clearData();
         }
 
-        private void buttonSaveMenu_Click(object sender, EventArgs e)
+        private async void buttonSaveMenu_Click(object sender, EventArgs e)
         {
             uploadMenu(textBoxURL.Text, jsonMenu);
             foreach(string[] picture in mediaFilesToUpload) {
-                uploadPicture(textBoxURL.Text, picture[0]);
+                await uploadPicture(textBoxURL.Text, picture[0]);
             }
             mediaFilesToUpload.Clear();
         }
 
-        private void uploadMenu(string urlString, dynamic jsonMenu)
+        private async Task<bool> uploadMenu(string urlString, dynamic jsonMenu)
         {
             try
             {
@@ -180,21 +191,23 @@ namespace Restaurant_Menu
 
                 client.Credentials = CredentialCache.DefaultCredentials;
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
-                client.UploadString("http://" + url.IdnHost + "/upload", "POST", dataString);
+                await client.UploadStringTaskAsync("http://" + url.IdnHost + "/upload", "POST", dataString);
 
                 client.Dispose();
-                    
+                return true;
                 
 
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(err.Message + " http://" + (new Uri(urlString)).IdnHost + "/upload");
                 Console.Write(err);
+                return false;
             }
+            return false;
         }
 
-        private void uploadPicture(string urlString, string picturePath)
+        private async Task<bool> uploadPicture(string urlString, string picturePath)
         {
             try
             {
@@ -219,19 +232,21 @@ namespace Restaurant_Menu
                         string dataString = JsonConvert.SerializeObject(data);
                         client.Credentials = CredentialCache.DefaultCredentials;
                         client.Headers[HttpRequestHeader.ContentType] = "application/json";
-                        client.UploadString("http://" + url.IdnHost + "/picture", "POST", dataString);
-
-
+                        await client.UploadStringTaskAsync("http://" + url.IdnHost + "/picture", "POST", dataString);
                         client.Dispose();
+                        
                     }
                 }
+                return true;
 
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(err.Message + " http://" + (new Uri(urlString)).IdnHost + "/picture" + " Upload:" + picturePath);
                 Console.Write(err);
+                return false;
             }
+            return false;
         }
 
         private void textBoxURL_TextChanged(object sender, EventArgs e)
@@ -281,7 +296,12 @@ namespace Restaurant_Menu
             textBoxCurrentItemName.Clear();
             textBoxCurrentItemPrice.Enabled = false;
             textBoxCurrentItemPrice.Clear();
+            textBoxCurrentItemDescription.Enabled = false;
+            textBoxCurrentItemDescription.Clear();
+            buttonChangeCurrentItemPicture.Enabled = false;
 
+            pictureBoxCurrentItemPicture.Image = null;
+            currentItemPicture = "";
 
             comboBoxSelectItem.Items.Clear();
 
@@ -304,8 +324,12 @@ namespace Restaurant_Menu
             {
                 textBoxCurrentItemName.Enabled = false;
                 textBoxCurrentItemPrice.Enabled = false;
+                textBoxCurrentItemDescription.Enabled = false;
+                buttonChangeCurrentItemPicture.Enabled = false;
                 textBoxCurrentItemName.Clear();
                 textBoxCurrentItemPrice.Clear();
+                textBoxCurrentItemDescription.Clear();
+
 
             } else
             {
@@ -316,14 +340,44 @@ namespace Restaurant_Menu
 
         private void changeCurrentItem(string selectedItem)
         {
+            var url = new Uri(textBoxURL.Text);
+
             //Reenable textBoxes for current item since were now allowing edits to them.
             textBoxCurrentItemName.Enabled = true;
             textBoxCurrentItemPrice.Enabled = true;
+            textBoxCurrentItemDescription.Enabled = true;
+            buttonChangeCurrentItemPicture.Enabled = true;
+
+            pictureBoxCurrentItemPicture.Image = null;
+            currentItemPicture = "";
 
             dynamic itemObject = getItemByName(selectedItem);
             textBoxCurrentItemName.Text = selectedItem;
 
             textBoxCurrentItemPrice.Text = itemObject.itemPrice;
+
+            textBoxCurrentItemDescription.Text = itemObject.itemDescription;
+
+
+  
+            if (!string.IsNullOrEmpty((string)itemObject.itemPicture))
+            {
+                try
+                {
+                    string urlString = "http://" + url.IdnHost + "/" + (string)itemObject.itemPicture;
+                    pictureBoxCurrentItemPicture.Load(urlString);
+                }
+                catch (Exception err)
+                {
+                    //MessageBox.Show("Error loading picture (" + "http://" + url.IdnHost + "/" + (string)itemObject.itemPicture + "). Save your menu to fix this problem.");
+                    pictureBoxCurrentItemPicture.Image = Restaurant_Menu.Properties.Resources.FileNotFound1;
+                    Console.Write(err);
+                }
+            }
+
+            
+
+            
         }
 
         private dynamic getItemByName( string itemName)
@@ -356,7 +410,13 @@ namespace Restaurant_Menu
                     {
                         changedItem.itemName = textBoxCurrentItemName.Text;
                         changedItem.itemPrice = textBoxCurrentItemPrice.Text;
+                        changedItem.itemDescription = textBoxCurrentItemDescription.Text;
                         comboBoxSelectItem.Items[comboBoxSelectItem.SelectedIndex] = textBoxCurrentItemName.Text;
+                        if (!string.IsNullOrEmpty(currentItemPicture))
+                        {
+                            changedItem.itemPicture = Path.GetFileName(currentItemPicture);
+                            mediaFilesToUpload.Add(new string[] { currentItemPicture, "" });
+                        }
                     } else
                     {
                         MessageBox.Show("Couldn't be done because an item with that name already exists.");
@@ -364,6 +424,12 @@ namespace Restaurant_Menu
                 } else //Then its probably just price change.
                 {
                     changedItem.itemPrice = textBoxCurrentItemPrice.Text;
+                    changedItem.itemDescription = textBoxCurrentItemDescription.Text;
+                    if (!string.IsNullOrEmpty(currentItemPicture))
+                    {
+                        changedItem.itemPicture = Path.GetFileName(currentItemPicture);
+                        mediaFilesToUpload.Add(new string[] { currentItemPicture, "" });
+                    }
                 }
                 refreshListViewItems();
                 
@@ -408,8 +474,14 @@ namespace Restaurant_Menu
                 comboBoxSelectItem.Items.Remove(comboBoxSelectItem.SelectedItem);
                 textBoxCurrentItemName.Enabled = false;
                 textBoxCurrentItemPrice.Enabled = false;
+                textBoxCurrentItemDescription.Enabled = false;
+
+                pictureBoxCurrentItemPicture.Image = null;
+                currentItemPicture = "";
+
                 textBoxCurrentItemName.Clear();
                 textBoxCurrentItemPrice.Clear();
+                textBoxCurrentItemDescription.Clear();
                 refreshListViewItems();
 
             } else
@@ -468,8 +540,8 @@ namespace Restaurant_Menu
                 newItem.Add("itemName", textBoxNewItemName.Text);
                 newItem.Add("itemDescription", textBoxNewItemDescription.Text);
                 newItem.Add("itemPrice", textBoxNewItemPrice.Text);
-                newItem.Add("itemPicture", Path.GetFileName(itemPicture));
-                mediaFilesToUpload.Add(new string[] { itemPicture, "" });
+                newItem.Add("itemPicture", Path.GetFileName(newItemPicture));
+                mediaFilesToUpload.Add(new string[] { newItemPicture, "" });
                 dynamic category = getCategoryByName(comboBoxNewItemCategory.SelectedItem.ToString());
                 
                 
@@ -537,17 +609,52 @@ namespace Restaurant_Menu
         private void buttonNewCategoryPicture_Click(object sender, EventArgs e)
         {
             OpenFileDialog chooseCategoryPicture = new OpenFileDialog();
+            chooseCategoryPicture.Filter = "Image Files| *.jpg; *.jpeg; ...";
             if (chooseCategoryPicture.ShowDialog() == DialogResult.OK)
             {
                 string extension = Path.GetExtension(chooseCategoryPicture.FileName);
 
-                if (extension == ".jpeg" || extension == ".jpg" || extension == ".png")
+                if (extension == ".jpeg" || extension == ".jpg")
                 {
                     pictureBoxCategoryPicture.Image = Image.FromFile(chooseCategoryPicture.FileName);
                     categoryPicture = chooseCategoryPicture.FileName;
-                    //do what you want with this image
+
                 }
-                // do something here with fdlg.FileName ;
+
+            }
+        }
+
+        private void buttonAddItemPicture_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseItemPicture = new OpenFileDialog();
+            chooseItemPicture.Filter = "Image Files| *.jpg; *.jpeg; ...";
+            if (chooseItemPicture.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(chooseItemPicture.FileName);
+
+                if (extension == ".jpeg" || extension == ".jpg")
+                {
+                    pictureBoxItemPicture.Image = Image.FromFile(chooseItemPicture.FileName);
+                    newItemPicture = chooseItemPicture.FileName;
+                }
+
+            }
+        }
+
+        private void buttonChangeCurrentItemPicture_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseItemPicture = new OpenFileDialog();
+            chooseItemPicture.Filter = "Image Files| *.jpg; *.jpeg; ...";
+            if (chooseItemPicture.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(chooseItemPicture.FileName);
+
+                if (extension == ".jpeg" || extension == ".jpg")
+                {
+                    pictureBoxCurrentItemPicture.Image = Image.FromFile(chooseItemPicture.FileName);
+                    currentItemPicture = chooseItemPicture.FileName;
+                }
+
             }
         }
     }
