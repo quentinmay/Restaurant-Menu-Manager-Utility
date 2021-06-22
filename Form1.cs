@@ -42,8 +42,14 @@ namespace Restaurant_Menu
             jsonMenu = await downloadJson(textBoxURL.Text);
             //Console.WriteLine(jsonMenu);
             fillInData();
+            //Lock URL
             textBoxURL.Enabled = false;
             buttonOpenJSON.Enabled = false;
+
+            //Lock Credentials
+            textBoxUsername.Enabled = false;
+            textBoxPassword.Enabled = false;
+
             //string filePath = "C:\\Users\\Public\\tacoshop.json";
             //openJson(filePath);
 
@@ -66,7 +72,7 @@ namespace Restaurant_Menu
 
                 request.ContentType = "application/json; charset=utf-8";
                 request.Accept = "text/html, application/json, */*";
-                request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes("username:password"));
+                request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(textBoxUsername.Text + ":" + textBoxPassword.Text));
                 request.PreAuthenticate = false;
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
                 using (Stream responseStream = response.GetResponseStream())
@@ -187,7 +193,7 @@ namespace Restaurant_Menu
 
                 string dataString = JsonConvert.SerializeObject(data);
 
-                client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes("username:password")));
+                client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes(textBoxUsername.Text + ":" + textBoxPassword.Text)));
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 await client.UploadStringTaskAsync("http://" + url.IdnHost + "/upload", "POST", dataString);
 
@@ -654,6 +660,11 @@ namespace Restaurant_Menu
                 }
 
             }
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

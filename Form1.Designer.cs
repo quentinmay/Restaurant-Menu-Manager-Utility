@@ -89,6 +89,10 @@ namespace Restaurant_Menu
             this.pictureBoxCurrentItemPicture = new System.Windows.Forms.PictureBox();
             this.pictureBoxCategoryPicture = new System.Windows.Forms.PictureBox();
             this.pictureBoxItemPicture = new System.Windows.Forms.PictureBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurrentItemPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCategoryPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPicture)).BeginInit();
@@ -624,12 +628,52 @@ namespace Restaurant_Menu
             this.pictureBoxItemPicture.TabIndex = 5;
             this.pictureBoxItemPicture.TabStop = false;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(734, 458);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 13);
+            this.label22.TabIndex = 66;
+            this.label22.Text = "Password:";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(794, 455);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPassword.TabIndex = 65;
+            this.textBoxPassword.Text = "password";
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(732, 432);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.TabIndex = 64;
+            this.label23.Text = "Username:";
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Location = new System.Drawing.Point(794, 429);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUsername.TabIndex = 63;
+            this.textBoxUsername.Text = "username";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1101, 506);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.textBoxCurrentItemDescription);
             this.Controls.Add(this.buttonChangeCurrentItemPicture);
@@ -757,6 +801,10 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxCurrentItemDescription;
         private System.Windows.Forms.Button buttonChangeCurrentItemPicture;
         private System.Windows.Forms.PictureBox pictureBoxCurrentItemPicture;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBoxUsername;
     }
 }
 
