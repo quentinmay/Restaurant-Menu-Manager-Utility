@@ -187,7 +187,7 @@ namespace Restaurant_Menu
 
                 string dataString = JsonConvert.SerializeObject(data);
 
-                client.Credentials = CredentialCache.DefaultCredentials;
+                client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes("username:password")));
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 await client.UploadStringTaskAsync("http://" + url.IdnHost + "/upload", "POST", dataString);
 
@@ -228,7 +228,7 @@ namespace Restaurant_Menu
                         data.Add("fileData", base64String);
 
                         string dataString = JsonConvert.SerializeObject(data);
-                        client.Credentials = CredentialCache.DefaultCredentials;
+                        client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes("username:password")));
                         client.Headers[HttpRequestHeader.ContentType] = "application/json";
                         await client.UploadStringTaskAsync("http://" + url.IdnHost + "/picture", "POST", dataString);
                         client.Dispose();
