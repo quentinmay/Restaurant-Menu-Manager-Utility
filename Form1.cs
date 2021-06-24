@@ -149,7 +149,7 @@ namespace Restaurant_Menu
 
             listViewItems.Items.Clear();
 
-            
+
 
             textBoxNewCategory.Clear();
             textBoxNewCategoryDescription.Clear();
@@ -175,7 +175,7 @@ namespace Restaurant_Menu
         private async void buttonSaveMenu_Click(object sender, EventArgs e)
         {
             uploadMenu(textBoxURL.Text, jsonMenu);
-            foreach(string[] picture in mediaFilesToUpload) {
+            foreach (string[] picture in mediaFilesToUpload) {
                 await uploadPicture(textBoxURL.Text, picture[0]);
             }
             mediaFilesToUpload.Clear();
@@ -199,7 +199,7 @@ namespace Restaurant_Menu
 
                 client.Dispose();
                 return true;
-                
+
 
             }
             catch (Exception err)
@@ -216,7 +216,7 @@ namespace Restaurant_Menu
             try
             {
                 WebClient client = new WebClient();
-                
+
                 var url = new Uri(urlString);
 
                 using (Image image = Image.FromFile(picturePath))
@@ -238,7 +238,7 @@ namespace Restaurant_Menu
                         client.Headers[HttpRequestHeader.ContentType] = "application/json";
                         await client.UploadStringTaskAsync("http://" + url.IdnHost + "/picture", "POST", dataString);
                         client.Dispose();
-                        
+
                     }
                 }
                 return true;
@@ -339,7 +339,7 @@ namespace Restaurant_Menu
             {
                 changeCurrentItem(comboBoxSelectItem.SelectedItem.ToString());
             }
-            
+
         }
 
         private void changeCurrentItem(string selectedItem)
@@ -363,7 +363,7 @@ namespace Restaurant_Menu
             textBoxCurrentItemDescription.Text = itemObject.itemDescription;
 
 
-  
+
             if (!string.IsNullOrEmpty((string)itemObject.itemPicture))
             {
                 try
@@ -379,12 +379,12 @@ namespace Restaurant_Menu
                 }
             }
 
-            
 
-            
+
+
         }
 
-        private dynamic getItemByName( string itemName)
+        private dynamic getItemByName(string itemName)
         {
             foreach (dynamic currentCategory in jsonMenu.categories)
             {
@@ -436,8 +436,8 @@ namespace Restaurant_Menu
                     }
                 }
                 refreshListViewItems();
-                
-                
+
+
             }
 
         }
@@ -448,21 +448,35 @@ namespace Restaurant_Menu
             fillInData();
         }
 
+
+
+
+
         private bool itemExists(string itemName)
         {
-            foreach (dynamic category in jsonMenu.categories)
-            {
-                foreach (dynamic item in category.categoryItems)
+
+            if (!string.IsNullOrEmpty(textBoxRestaurantName.Text))
+            {    
+                    
+                foreach (dynamic category in jsonMenu.categories)
                 {
-                    if (item.itemName == itemName)
+                    foreach (dynamic item in category.categoryItems)
                     {
-                        return true;
+                        if (item.itemName == itemName)
+                        {
+                            return true;
+                        }
+
                     }
 
                 }
-                
+           
+
             }
+
+      
             return false;
+            
         }
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)
@@ -472,7 +486,9 @@ namespace Restaurant_Menu
 
         private void deleteCurrentItem()
         {
-            if (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
+            
+
+            if  (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
             {
                 deleteItemByName(comboBoxSelectItem.SelectedItem.ToString());
                 comboBoxSelectItem.Items.Remove(comboBoxSelectItem.SelectedItem);
@@ -488,7 +504,8 @@ namespace Restaurant_Menu
                 textBoxCurrentItemDescription.Clear();
                 refreshListViewItems();
 
-            } else
+            } 
+            else
             {
                 MessageBox.Show("No item to delete.");
             }
@@ -514,12 +531,16 @@ namespace Restaurant_Menu
 
         private dynamic getCategoryByName(string categoryName)
         {
-            foreach (dynamic category in jsonMenu.categories)
+            if (!string.IsNullOrEmpty(textBoxRestaurantName.Text))
             {
-                if (category.categoryName == categoryName)
+                foreach (dynamic category in jsonMenu.categories)
                 {
-                    return category;
+                    if (category.categoryName == categoryName)
+                    {
+                        return category;
+                    }
                 }
+
             }
             return null;
         }
@@ -537,6 +558,7 @@ namespace Restaurant_Menu
         }
         private void addNewItem()
         {
+         
 
             if (!itemExists(textBoxNewItemName.Text) && !string.IsNullOrEmpty(textBoxNewItemName.Text) && !string.IsNullOrEmpty(textBoxNewItemPrice.Text) && comboBoxNewItemCategory.SelectedIndex != -1)
             {
