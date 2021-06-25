@@ -174,6 +174,11 @@ namespace Restaurant_Menu
 
         private async void buttonSaveMenu_Click(object sender, EventArgs e)
         {
+            //Save restaurant metadata before sending.
+            jsonMenu.restaurantName = textBoxRestaurantName.Text;
+            jsonMenu.restaurantDescription = textBoxRestaurantDescription.Text;
+
+            //Upload menu and pictures
             uploadMenu(textBoxURL.Text, jsonMenu);
             foreach (string[] picture in mediaFilesToUpload) {
                 await uploadPicture(textBoxURL.Text, picture[0]);
