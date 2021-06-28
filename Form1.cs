@@ -19,6 +19,8 @@ namespace Restaurant_Menu
         private string categoryPicture = "";
         private string newItemPicture = "";
         private string currentItemPicture = "";
+        private string restaurantIcon = "";
+
         private List<string[]> mediaFilesToUpload = new List<string[]>();
         public Form1()
         {
@@ -49,6 +51,7 @@ namespace Restaurant_Menu
             //Lock Credentials
             textBoxUsername.Enabled = false;
             textBoxPassword.Enabled = false;
+            buttonRestaurantIcon.Enabled = true;
 
             //string filePath = "C:\\Users\\Public\\tacoshop.json";
             //openJson(filePath);
@@ -96,7 +99,6 @@ namespace Restaurant_Menu
             //Populate basic menu data.
             this.Text = "Editing " + (string)jsonMenu.restaurantName;
             textBoxRestaurantName.Text = (string)jsonMenu.restaurantName;
-            textBoxRestaurantIcon.Text = (string)jsonMenu.restaurantIcon;
             textBoxRestaurantDescription.Text = (string)jsonMenu.restaurantDescription;
             foreach (dynamic category in jsonMenu.categories)
             {
@@ -104,6 +106,25 @@ namespace Restaurant_Menu
                 comboBoxNewItemCategory.Items.Add((string)category.categoryName);
                 comboBoxDeleteCategory.Items.Add((string)category.categoryName);
             }
+
+
+            //Try to load restaurant Icon Picture
+            if (!string.IsNullOrEmpty((string)jsonMenu.restaurantIcon))
+            {
+                try
+                {
+                    var url = new Uri(textBoxURL.Text);
+
+                    string urlString = "http://" + url.IdnHost + "/" + (string)jsonMenu.restaurantIcon;
+                    pictureBoxRestaurantIcon.Load(urlString);
+                }
+                catch (Exception err)
+                {
+                    pictureBoxRestaurantIcon.Image = Restaurant_Menu.Properties.Resources.FileNotFound2;
+                    Console.Write(err);
+                }
+            }
+
             //Populate existing items combobox
             refreshListViewItems();
 
@@ -139,7 +160,6 @@ namespace Restaurant_Menu
             textBoxCurrentItemDescription.Clear();
 
             textBoxRestaurantName.Clear();
-            textBoxRestaurantIcon.Clear();
             textBoxRestaurantDescription.Clear();
 
             comboBoxCategory.Items.Clear();
@@ -161,10 +181,12 @@ namespace Restaurant_Menu
             categoryPicture = "";
             newItemPicture = "";
             currentItemPicture = "";
+            restaurantIcon = "";
 
             pictureBoxCategoryPicture.Image = null;
             pictureBoxItemPicture.Image = null;
             pictureBoxCurrentItemPicture.Image = null;
+            pictureBoxRestaurantIcon.Image = null;
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
@@ -684,12 +706,42 @@ namespace Restaurant_Menu
                 {
                     pictureBoxCurrentItemPicture.Image = Image.FromFile(chooseItemPicture.FileName);
                     currentItemPicture = chooseItemPicture.FileName;
+
                 }
 
             }
         }
 
         private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxCurrentItemPicture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRestaurantIcon_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog chooseRestaurantIcon = new OpenFileDialog();
+            chooseRestaurantIcon.Filter = "Image Files| *.jpg; *.jpeg; ...";
+            if (chooseRestaurantIcon.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(chooseRestaurantIcon.FileName);
+
+                if (extension == ".jpeg" || extension == ".jpg")
+                {
+                    pictureBoxRestaurantIcon.Image = Image.FromFile(chooseRestaurantIcon.FileName);
+                    restaurantIcon = chooseRestaurantIcon.FileName;
+                    mediaFilesToUpload.Add(new string[] { restaurantIcon, "" });
+                    jsonMenu.restaurantIcon = Path.GetFileName(restaurantIcon);
+                }
+
+            }
+        }
+
+        private void addRestaurantIcon()
         {
 
         }

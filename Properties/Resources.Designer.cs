@@ -83,6 +83,16 @@ namespace Restaurant_Menu.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FileNotFound2 {
+            get {
+                object obj = ResourceManager.GetObject("FileNotFound2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Smash {
             get {
                 object obj = ResourceManager.GetObject("Smash", resourceCulture);

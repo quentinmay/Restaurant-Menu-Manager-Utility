@@ -52,7 +52,6 @@ namespace Restaurant_Menu
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxRestaurantName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxRestaurantIcon = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxRestaurantDescription = new System.Windows.Forms.TextBox();
             this.buttonSaveItem = new System.Windows.Forms.Button();
@@ -86,13 +85,16 @@ namespace Restaurant_Menu
             this.label21 = new System.Windows.Forms.Label();
             this.textBoxCurrentItemDescription = new System.Windows.Forms.TextBox();
             this.buttonChangeCurrentItemPicture = new System.Windows.Forms.Button();
-            this.pictureBoxCurrentItemPicture = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCategoryPicture = new System.Windows.Forms.PictureBox();
-            this.pictureBoxItemPicture = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.buttonRestaurantIcon = new System.Windows.Forms.Button();
+            this.pictureBoxRestaurantIcon = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCurrentItemPicture = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCategoryPicture = new System.Windows.Forms.PictureBox();
+            this.pictureBoxItemPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRestaurantIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurrentItemPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCategoryPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPicture)).BeginInit();
@@ -280,7 +282,7 @@ namespace Restaurant_Menu
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(801, 81);
+            this.label9.Location = new System.Drawing.Point(801, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 22;
@@ -288,7 +290,7 @@ namespace Restaurant_Menu
             // 
             // textBoxRestaurantName
             // 
-            this.textBoxRestaurantName.Location = new System.Drawing.Point(900, 78);
+            this.textBoxRestaurantName.Location = new System.Drawing.Point(900, 25);
             this.textBoxRestaurantName.Name = "textBoxRestaurantName";
             this.textBoxRestaurantName.Size = new System.Drawing.Size(100, 20);
             this.textBoxRestaurantName.TabIndex = 21;
@@ -296,18 +298,11 @@ namespace Restaurant_Menu
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(808, 108);
+            this.label10.Location = new System.Drawing.Point(808, 83);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "Restaurant Icon:";
-            // 
-            // textBoxRestaurantIcon
-            // 
-            this.textBoxRestaurantIcon.Location = new System.Drawing.Point(900, 104);
-            this.textBoxRestaurantIcon.Name = "textBoxRestaurantIcon";
-            this.textBoxRestaurantIcon.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRestaurantIcon.TabIndex = 23;
             // 
             // label11
             // 
@@ -601,33 +596,6 @@ namespace Restaurant_Menu
             this.buttonChangeCurrentItemPicture.UseVisualStyleBackColor = true;
             this.buttonChangeCurrentItemPicture.Click += new System.EventHandler(this.buttonChangeCurrentItemPicture_Click);
             // 
-            // pictureBoxCurrentItemPicture
-            // 
-            this.pictureBoxCurrentItemPicture.Location = new System.Drawing.Point(650, 256);
-            this.pictureBoxCurrentItemPicture.Name = "pictureBoxCurrentItemPicture";
-            this.pictureBoxCurrentItemPicture.Size = new System.Drawing.Size(89, 89);
-            this.pictureBoxCurrentItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCurrentItemPicture.TabIndex = 59;
-            this.pictureBoxCurrentItemPicture.TabStop = false;
-            // 
-            // pictureBoxCategoryPicture
-            // 
-            this.pictureBoxCategoryPicture.Location = new System.Drawing.Point(97, 183);
-            this.pictureBoxCategoryPicture.Name = "pictureBoxCategoryPicture";
-            this.pictureBoxCategoryPicture.Size = new System.Drawing.Size(89, 89);
-            this.pictureBoxCategoryPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCategoryPicture.TabIndex = 50;
-            this.pictureBoxCategoryPicture.TabStop = false;
-            // 
-            // pictureBoxItemPicture
-            // 
-            this.pictureBoxItemPicture.Location = new System.Drawing.Point(368, 243);
-            this.pictureBoxItemPicture.Name = "pictureBoxItemPicture";
-            this.pictureBoxItemPicture.Size = new System.Drawing.Size(89, 89);
-            this.pictureBoxItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxItemPicture.TabIndex = 5;
-            this.pictureBoxItemPicture.TabStop = false;
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -664,12 +632,62 @@ namespace Restaurant_Menu
             this.textBoxUsername.TabIndex = 63;
             this.textBoxUsername.Text = "username";
             // 
+            // buttonRestaurantIcon
+            // 
+            this.buttonRestaurantIcon.Enabled = false;
+            this.buttonRestaurantIcon.Location = new System.Drawing.Point(901, 64);
+            this.buttonRestaurantIcon.Name = "buttonRestaurantIcon";
+            this.buttonRestaurantIcon.Size = new System.Drawing.Size(75, 52);
+            this.buttonRestaurantIcon.TabIndex = 68;
+            this.buttonRestaurantIcon.Text = "Add Restaurant Icon";
+            this.buttonRestaurantIcon.UseVisualStyleBackColor = true;
+            this.buttonRestaurantIcon.Click += new System.EventHandler(this.buttonRestaurantIcon_Click);
+            // 
+            // pictureBoxRestaurantIcon
+            // 
+            this.pictureBoxRestaurantIcon.Location = new System.Drawing.Point(982, 47);
+            this.pictureBoxRestaurantIcon.Name = "pictureBoxRestaurantIcon";
+            this.pictureBoxRestaurantIcon.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxRestaurantIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRestaurantIcon.TabIndex = 67;
+            this.pictureBoxRestaurantIcon.TabStop = false;
+            // 
+            // pictureBoxCurrentItemPicture
+            // 
+            this.pictureBoxCurrentItemPicture.Location = new System.Drawing.Point(650, 256);
+            this.pictureBoxCurrentItemPicture.Name = "pictureBoxCurrentItemPicture";
+            this.pictureBoxCurrentItemPicture.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxCurrentItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCurrentItemPicture.TabIndex = 59;
+            this.pictureBoxCurrentItemPicture.TabStop = false;
+            this.pictureBoxCurrentItemPicture.Click += new System.EventHandler(this.pictureBoxCurrentItemPicture_Click);
+            // 
+            // pictureBoxCategoryPicture
+            // 
+            this.pictureBoxCategoryPicture.Location = new System.Drawing.Point(97, 183);
+            this.pictureBoxCategoryPicture.Name = "pictureBoxCategoryPicture";
+            this.pictureBoxCategoryPicture.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxCategoryPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCategoryPicture.TabIndex = 50;
+            this.pictureBoxCategoryPicture.TabStop = false;
+            // 
+            // pictureBoxItemPicture
+            // 
+            this.pictureBoxItemPicture.Location = new System.Drawing.Point(368, 243);
+            this.pictureBoxItemPicture.Name = "pictureBoxItemPicture";
+            this.pictureBoxItemPicture.Size = new System.Drawing.Size(89, 89);
+            this.pictureBoxItemPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxItemPicture.TabIndex = 5;
+            this.pictureBoxItemPicture.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1101, 506);
+            this.Controls.Add(this.buttonRestaurantIcon);
+            this.Controls.Add(this.pictureBoxRestaurantIcon);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label23);
@@ -705,7 +723,6 @@ namespace Restaurant_Menu
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxRestaurantDescription);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBoxRestaurantIcon);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxRestaurantName);
             this.Controls.Add(this.buttonOpenJSON);
@@ -732,6 +749,7 @@ namespace Restaurant_Menu
             this.Name = "Form1";
             this.Text = "Editting TacoBellMenu.json";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRestaurantIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurrentItemPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCategoryPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItemPicture)).EndInit();
@@ -765,7 +783,6 @@ namespace Restaurant_Menu
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxRestaurantName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxRestaurantIcon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxRestaurantDescription;
         private System.Windows.Forms.Button buttonSaveItem;
@@ -805,6 +822,8 @@ namespace Restaurant_Menu
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Button buttonRestaurantIcon;
+        private System.Windows.Forms.PictureBox pictureBoxRestaurantIcon;
     }
 }
 
