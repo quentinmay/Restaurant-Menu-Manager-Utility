@@ -747,7 +747,7 @@ namespace Restaurant_Menu
             this.Controls.Add(this.buttonAddNewItem);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
-            this.Text = "Editting TacoBellMenu.json";
+            this.Text = "Manager Utility Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRestaurantIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCurrentItemPicture)).EndInit();
