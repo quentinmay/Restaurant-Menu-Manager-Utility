@@ -297,7 +297,48 @@ namespace Restaurant_Menu
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(textBoxNewMenu.Text) && jsonMenu == null) {
+                
+                newMenu();
 
+            }
+        }
+
+        private async Task<bool> newMenu()
+        {
+            var url = new Uri(textBoxURL.Text);
+            string urlString = "http://" + url.IdnHost + "/";
+
+            try
+            {
+                WebClient client = new WebClient();
+                string menuName = textBoxNewMenu.Text;
+                if (!menuName.EndsWith(".json")) menuName += ".json"; //janky solution
+                if (!menuName.StartsWith("/")) menuName = "/" + menuName;
+                string blankJsonString = "{ \"categories\": [], \"restaurantDescription\": \"\", \"restaurantIcon\": \"\", \"restaurantName\": \"New Shop\"}";
+                dynamic json = JsonConvert.DeserializeObject(blankJsonString);
+                
+                string blankJson = JsonConvert.SerializeObject(json);
+                JObject data = new JObject();
+                data.Add("fileName", menuName);
+                data.Add("menu", json);
+
+                string dataString = JsonConvert.SerializeObject(data);
+
+                client.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes(textBoxUsername.Text + ":" + textBoxPassword.Text)));
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                await client.UploadStringTaskAsync("http://" + url.IdnHost + "/upload", "POST", dataString);
+                client.Dispose();
+                MessageBox.Show("✅ New menu created.");
+                return true;
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message + " http://" + (new Uri(urlString)).IdnHost + "/upload");
+                Console.Write(err);
+                return false;
+            }
         }
 
         private void textBoxNewItemName_TextChanged(object sender, EventArgs e)
@@ -515,7 +556,7 @@ namespace Restaurant_Menu
         {
             
 
-            if  (!string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()))
+            if  (jsonMenu != null && !string.IsNullOrEmpty(comboBoxSelectItem.SelectedItem.ToString()) )
             {
                 deleteItemByName(comboBoxSelectItem.SelectedItem.ToString());
                 comboBoxSelectItem.Items.Remove(comboBoxSelectItem.SelectedItem);
@@ -661,6 +702,7 @@ namespace Restaurant_Menu
 
         private void buttonNewCategoryPicture_Click(object sender, EventArgs e)
         {
+            if (jsonMenu == null) return;
             OpenFileDialog chooseCategoryPicture = new OpenFileDialog();
             chooseCategoryPicture.Filter = "Image Files| *.jpg; *.jpeg; ...";
             if (chooseCategoryPicture.ShowDialog() == DialogResult.OK)
@@ -679,6 +721,7 @@ namespace Restaurant_Menu
 
         private void buttonAddItemPicture_Click(object sender, EventArgs e)
         {
+            if (jsonMenu == null) return;
             OpenFileDialog chooseItemPicture = new OpenFileDialog();
             chooseItemPicture.Filter = "Image Files| *.jpg; *.jpeg; ...";
             if (chooseItemPicture.ShowDialog() == DialogResult.OK)
@@ -742,6 +785,11 @@ namespace Restaurant_Menu
         }
 
         private void addRestaurantIcon()
+        {
+
+        }
+
+        private void textBoxNewMenu_TextChanged(object sender, EventArgs e)
         {
 
         }
