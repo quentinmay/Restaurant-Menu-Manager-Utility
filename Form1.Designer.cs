@@ -30,6 +30,7 @@ namespace Restaurant_Menu
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonAddNewItem = new System.Windows.Forms.Button();
             this.textBoxNewItemName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -103,6 +104,7 @@ namespace Restaurant_Menu
             // buttonAddNewItem
             // 
             this.buttonAddNewItem.BackColor = System.Drawing.Color.Lime;
+            this.buttonAddNewItem.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddNewItem.Location = new System.Drawing.Point(312, 358);
             this.buttonAddNewItem.Name = "buttonAddNewItem";
             this.buttonAddNewItem.Size = new System.Drawing.Size(107, 76);
@@ -122,18 +124,20 @@ namespace Restaurant_Menu
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 92);
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(258, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(64, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "Item Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 125);
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(263, 126);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(59, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "Item Price:";
             // 
@@ -146,6 +150,7 @@ namespace Restaurant_Menu
             // 
             // buttonAddItemPicture
             // 
+            this.buttonAddItemPicture.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddItemPicture.Location = new System.Drawing.Point(287, 260);
             this.buttonAddItemPicture.Name = "buttonAddItemPicture";
             this.buttonAddItemPicture.Size = new System.Drawing.Size(75, 52);
@@ -177,20 +182,20 @@ namespace Restaurant_Menu
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(486, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 31);
+            this.label4.Size = new System.Drawing.Size(139, 34);
             this.label4.TabIndex = 10;
             this.label4.Text = "Edit Item:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(248, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(205, 31);
+            this.label5.Size = new System.Drawing.Size(207, 34);
             this.label5.TabIndex = 11;
             this.label5.Text = "Add New Item:";
             // 
@@ -207,15 +212,17 @@ namespace Restaurant_Menu
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(500, 84);
+            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(494, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 13);
+            this.label6.Size = new System.Drawing.Size(108, 14);
             this.label6.TabIndex = 13;
             this.label6.Text = "Select Existing Item:";
             // 
             // buttonDeleteItem
             // 
             this.buttonDeleteItem.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteItem.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeleteItem.Location = new System.Drawing.Point(683, 358);
             this.buttonDeleteItem.Name = "buttonDeleteItem";
             this.buttonDeleteItem.Size = new System.Drawing.Size(68, 50);
@@ -227,6 +234,7 @@ namespace Restaurant_Menu
             // buttonSaveMenu
             // 
             this.buttonSaveMenu.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.buttonSaveMenu.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveMenu.Location = new System.Drawing.Point(982, 427);
             this.buttonSaveMenu.Name = "buttonSaveMenu";
             this.buttonSaveMenu.Size = new System.Drawing.Size(107, 76);
@@ -238,9 +246,10 @@ namespace Restaurant_Menu
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(545, 136);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.Size = new System.Drawing.Size(59, 14);
             this.label7.TabIndex = 19;
             this.label7.Text = "Item Price:";
             // 
@@ -255,9 +264,10 @@ namespace Restaurant_Menu
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(541, 110);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.Size = new System.Drawing.Size(64, 14);
             this.label8.TabIndex = 17;
             this.label8.Text = "Item Name:";
             // 
@@ -271,6 +281,7 @@ namespace Restaurant_Menu
             // 
             // buttonOpenJSON
             // 
+            this.buttonOpenJSON.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOpenJSON.Location = new System.Drawing.Point(610, 429);
             this.buttonOpenJSON.Name = "buttonOpenJSON";
             this.buttonOpenJSON.Size = new System.Drawing.Size(112, 48);
@@ -282,9 +293,10 @@ namespace Restaurant_Menu
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(801, 28);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 13);
+            this.label9.Size = new System.Drawing.Size(98, 14);
             this.label9.TabIndex = 22;
             this.label9.Text = "Restaurant Name:";
             // 
@@ -298,18 +310,20 @@ namespace Restaurant_Menu
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(808, 83);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.Size = new System.Drawing.Size(91, 14);
             this.label10.TabIndex = 24;
             this.label10.Text = "Restaurant Icon:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(776, 141);
+            this.label11.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(766, 142);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 13);
+            this.label11.Size = new System.Drawing.Size(128, 14);
             this.label11.TabIndex = 26;
             this.label11.Text = "Restaurant Description:";
             // 
@@ -324,6 +338,7 @@ namespace Restaurant_Menu
             // buttonSaveItem
             // 
             this.buttonSaveItem.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.buttonSaveItem.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveItem.Location = new System.Drawing.Point(536, 332);
             this.buttonSaveItem.Name = "buttonSaveItem";
             this.buttonSaveItem.Size = new System.Drawing.Size(107, 76);
@@ -335,9 +350,10 @@ namespace Restaurant_Menu
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(478, 59);
+            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(470, 59);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 13);
+            this.label12.Size = new System.Drawing.Size(132, 14);
             this.label12.TabIndex = 29;
             this.label12.Text = "Select Existing Category:";
             // 
@@ -353,6 +369,7 @@ namespace Restaurant_Menu
             // 
             // buttonClearAll
             // 
+            this.buttonClearAll.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClearAll.Location = new System.Drawing.Point(492, 429);
             this.buttonClearAll.Name = "buttonClearAll";
             this.buttonClearAll.Size = new System.Drawing.Size(112, 48);
@@ -418,27 +435,31 @@ namespace Restaurant_Menu
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(870, 246);
+            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(874, 246);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(86, 14);
             this.label3.TabIndex = 41;
             this.label3.Text = "All Menu Items";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(251, 59);
+            this.label14.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(241, 59);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.Size = new System.Drawing.Size(81, 14);
             this.label14.TabIndex = 43;
             this.label14.Text = "Item Category:";
+            this.label14.Click += new System.EventHandler(this.label14_Click_1);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(240, 160);
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(228, 183);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 13);
+            this.label15.Size = new System.Drawing.Size(94, 14);
             this.label15.TabIndex = 45;
             this.label15.Text = "Item Description:";
             // 
@@ -453,10 +474,10 @@ namespace Restaurant_Menu
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(9, 13);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(208, 31);
+            this.label16.Size = new System.Drawing.Size(205, 34);
             this.label16.TabIndex = 46;
             this.label16.Text = "New Category:";
             // 
@@ -472,9 +493,10 @@ namespace Restaurant_Menu
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 55);
+            this.label17.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 55);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 13);
+            this.label17.Size = new System.Drawing.Size(88, 14);
             this.label17.TabIndex = 49;
             this.label17.Text = "Category Name:";
             // 
@@ -489,9 +511,10 @@ namespace Restaurant_Menu
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(28, 92);
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(22, 92);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 26);
+            this.label18.Size = new System.Drawing.Size(69, 28);
             this.label18.TabIndex = 53;
             this.label18.Text = "Category\r\nDescription:";
             // 
@@ -505,6 +528,7 @@ namespace Restaurant_Menu
             // 
             // buttonNewCategoryPicture
             // 
+            this.buttonNewCategoryPicture.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNewCategoryPicture.Location = new System.Drawing.Point(16, 200);
             this.buttonNewCategoryPicture.Name = "buttonNewCategoryPicture";
             this.buttonNewCategoryPicture.Size = new System.Drawing.Size(75, 52);
@@ -516,6 +540,7 @@ namespace Restaurant_Menu
             // buttonNewCategory
             // 
             this.buttonNewCategory.BackColor = System.Drawing.Color.Lime;
+            this.buttonNewCategory.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNewCategory.Location = new System.Drawing.Point(31, 278);
             this.buttonNewCategory.Name = "buttonNewCategory";
             this.buttonNewCategory.Size = new System.Drawing.Size(107, 76);
@@ -527,16 +552,17 @@ namespace Restaurant_Menu
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Tai Le", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(9, 357);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(235, 31);
+            this.label19.Size = new System.Drawing.Size(231, 34);
             this.label19.TabIndex = 55;
             this.label19.Text = "Delete Category:";
             // 
             // buttonDeleteCategory
             // 
             this.buttonDeleteCategory.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteCategory.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeleteCategory.Location = new System.Drawing.Point(167, 398);
             this.buttonDeleteCategory.Name = "buttonDeleteCategory";
             this.buttonDeleteCategory.Size = new System.Drawing.Size(68, 50);
@@ -557,9 +583,10 @@ namespace Restaurant_Menu
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(28, 398);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(75, 13);
+            this.label20.Size = new System.Drawing.Size(81, 14);
             this.label20.TabIndex = 57;
             this.label20.Text = "Item Category:";
             // 
@@ -570,9 +597,10 @@ namespace Restaurant_Menu
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(522, 173);
+            this.label21.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(511, 174);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(86, 13);
+            this.label21.Size = new System.Drawing.Size(94, 14);
             this.label21.TabIndex = 62;
             this.label21.Text = "Item Description:";
             // 
@@ -588,6 +616,7 @@ namespace Restaurant_Menu
             // buttonChangeCurrentItemPicture
             // 
             this.buttonChangeCurrentItemPicture.Enabled = false;
+            this.buttonChangeCurrentItemPicture.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonChangeCurrentItemPicture.Location = new System.Drawing.Point(569, 273);
             this.buttonChangeCurrentItemPicture.Name = "buttonChangeCurrentItemPicture";
             this.buttonChangeCurrentItemPicture.Size = new System.Drawing.Size(75, 52);
@@ -599,9 +628,10 @@ namespace Restaurant_Menu
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(734, 458);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 13);
+            this.label22.Size = new System.Drawing.Size(59, 14);
             this.label22.TabIndex = 66;
             this.label22.Text = "Password:";
             this.label22.Click += new System.EventHandler(this.label22_Click);
@@ -618,9 +648,10 @@ namespace Restaurant_Menu
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(732, 432);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.Size = new System.Drawing.Size(61, 14);
             this.label23.TabIndex = 64;
             this.label23.Text = "Username:";
             // 
@@ -635,6 +666,7 @@ namespace Restaurant_Menu
             // buttonRestaurantIcon
             // 
             this.buttonRestaurantIcon.Enabled = false;
+            this.buttonRestaurantIcon.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRestaurantIcon.Location = new System.Drawing.Point(901, 64);
             this.buttonRestaurantIcon.Name = "buttonRestaurantIcon";
             this.buttonRestaurantIcon.Size = new System.Drawing.Size(75, 52);
@@ -746,6 +778,7 @@ namespace Restaurant_Menu
             this.Controls.Add(this.textBoxNewItemName);
             this.Controls.Add(this.buttonAddNewItem);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Manager Utility Tool";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -745,5 +745,10 @@ namespace Restaurant_Menu
         {
 
         }
+
+        private void label14_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
