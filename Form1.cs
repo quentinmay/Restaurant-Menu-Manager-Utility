@@ -170,9 +170,10 @@ namespace Restaurant_Menu
             listViewItems.Items.Clear();
 
 
-
             textBoxNewCategory.Clear();
             textBoxNewCategoryDescription.Clear();
+
+            textBoxNewMenu.Clear();
 
             textBoxCurrentItemName.Enabled = false;
             textBoxCurrentItemPrice.Enabled = false;
@@ -329,7 +330,10 @@ namespace Restaurant_Menu
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 await client.UploadStringTaskAsync("http://" + url.IdnHost + "/upload", "POST", dataString);
                 client.Dispose();
+                textBoxURL.Text = "http://" + url.IdnHost + menuName;
+                textBoxNewMenu.Clear();
                 MessageBox.Show("✅ New menu created.");
+                
                 return true;
 
             }
@@ -514,6 +518,7 @@ namespace Restaurant_Menu
         {
             clearData();
             fillInData();
+
         }
 
 
